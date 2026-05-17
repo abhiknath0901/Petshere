@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSphere Payment</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --cream:#f7efe7;
+    --light:#ead7c3;
+    --brown:#b8845f;
+    --dark:#7a5235;
+    --deep:#533421;
+    --white:rgba(255,255,255,0.82);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f6ede3,#e7d4bf,#d4b08c);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+}
+
+/* Main Layout */
+.main-container{
+    width:100%;
+    max-width:1450px;
+    min-height:92vh;
+    display:grid;
+    grid-template-columns:42% 58%;
+    border-radius:30px;
+    overflow:hidden;
+    box-shadow:0 25px 50px rgba(83,52,33,0.16);
+    background:rgba(255,255,255,0.3);
+    backdrop-filter:blur(10px);
+}
+
+/* LEFT SIDE */
+.left-section{
+    background:linear-gradient(160deg,#7a5235,#5a3924,#3d2518);
+    color:white;
+    padding:45px 35px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    position:relative;
+}
+
+.left-section::before{
+    content:"";
+    position:absolute;
+    width:280px;
+    height:280px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50%;
+    top:-60px;
+    right:-80px;
+}
+
+.left-section::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    background:rgba(255,255,255,0.04);
+    border-radius:50%;
+    bottom:-70px;
+    left:-60px;
+}
+
+.pet-image{
+    width:78%;
+    max-width:330px;
+    border-radius:24px;
+    object-fit:cover;
+    box-shadow:0 18px 30px rgba(0,0,0,0.28);
+    margin-bottom:28px;
+    z-index:1;
+}
+
+.site-title{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:10px;
+    z-index:1;
+}
+
+.tagline{
+    font-size:15px;
+    line-height:1.8;
+    opacity:.92;
+    max-width:320px;
+    z-index:1;
+}
+
+/* RIGHT SIDE */
+.right-section{
+    background:var(--white);
+    backdrop-filter:blur(18px);
+    padding:45px 50px;
+    overflow-y:auto;
+    animation:fadeUp .8s ease;
+}
+
+.title{
+    text-align:center;
+    font-size:34px;
+    color:var(--deep);
+    margin-bottom:28px;
+    font-weight:700;
+}
+
+/* Form */
+form{
+    width:100%;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    color:var(--deep);
+    margin-bottom:7px;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:14px;
+    border:1.8px solid #d9b79a;
+    background:#fffaf6;
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+    transition:.3s ease;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:var(--brown);
+    background:white;
+    box-shadow:0 0 0 4px rgba(184,132,95,0.12);
+    transform:translateY(-1px);
+}
+
+/* Payment Method */
+.payment-method{
+    background:#fff9f4;
+    border:1px solid #edd7c4;
+    padding:18px;
+    border-radius:18px;
+    margin-top:5px;
+}
+
+.payment-method label{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:12px;
+    cursor:pointer;
+    font-weight:500;
+}
+
+.payment-method input[type="radio"]{
+    width:auto;
+    accent-color:#7a5235;
+}
+
+/* Button */
+.pay-btn{
+    width:100%;
+    padding:16px;
+    margin-top:22px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,#b8845f,#7a5235);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 15px 25px rgba(122,82,53,0.2);
+}
+
+.pay-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 22px 30px rgba(122,82,53,0.28);
+    background:linear-gradient(135deg,#a97552,#603e29);
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Scrollbar */
+.right-section::-webkit-scrollbar{
+    width:8px;
+}
+
+.right-section::-webkit-scrollbar-thumb{
+    background:#c9a37f;
+    border-radius:20px;
+}
+
+/* Mobile */
+@media(max-width:980px){
+    .main-container{
+        grid-template-columns:1fr;
+    }
+
+    .left-section{
+        padding:35px 20px;
+    }
+
+    .pet-image{
+        width:240px;
+    }
+}
+
+@media(max-width:620px){
+    body{
+        padding:12px;
+    }
+
+    .right-section{
+        padding:28px 20px;
+    }
+
+    .title{
+        font-size:28px;
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .site-title{
+        font-size:34px;
+    }
+}
+
+    </style>
+</head>
+<body>
+  
+
+<div class="main-container">
+
+   
+    <div class="left-section">
+        <img src="C:\Users\HP\OneDrive\Desktop\payment.png" class="pet-image" alt="Pet Collage">
+        <h1 class="site-title">PetSphere</h1>
+        <p class="tagline">Adoption • Selling • Rescue • Medical Support</p>
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-section">
+
+       
+        <h2 class="title">Payment Details</h2>
+
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Select Service</label>
+                    <select required>
+                        <option>Select</option>
+                        <option>Adoption Fee</option>
+                        <option>Pet Selling</option>
+                        <option>Medical Support</option>
+                        <option>Grooming</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Amount (IND)</label>
+                    <input type="number" placeholder="Enter amount" required>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Your Name</label>
+                    <input type="text" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Email" required>
+                </div>
+            </div>
+
+            <div class="form-group payment-method">
+                <label>Select Payment Method</label>
+                <label><input type="radio" name="pay" required> Credit Card</label>
+                
+                <label><input type="radio" name="pay"> UPI</label>
+            </div>
+
+   <a href="Payment Details.html">
+    <button type="button" class="pay-btn">Proceed to Pay</button>
+</a>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+</div>
+
+</body>
+</html>

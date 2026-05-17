@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSphere | Book Online Consultation</title>
+
+<style>
+
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f6ede3,#e7d4bf,#d8b48a);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 15px;
+}
+
+/* Main Form Card */
+.form-box{
+    width:100%;
+    max-width:560px;
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.4);
+    border-radius:28px;
+    padding:38px;
+    box-shadow:0 20px 40px rgba(94,59,29,0.15);
+    animation:fadeUp .8s ease;
+}
+
+/* Heading */
+h2{
+    text-align:center;
+    font-size:30px;
+    color:#5a3720;
+    margin-bottom:28px;
+    font-weight:700;
+    letter-spacing:.5px;
+}
+
+/* Form Groups */
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    color:#6a4529;
+    margin-bottom:7px;
+}
+
+/* Inputs */
+input,
+select,
+textarea{
+    width:100%;
+    padding:13px 14px;
+    border-radius:14px;
+    border:1.8px solid #d9b58f;
+    background:#fffaf5;
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+    transition:.3s ease;
+    outline:none;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    border-color:#b67b45;
+    background:white;
+    box-shadow:0 0 0 4px rgba(182,123,69,0.12);
+}
+
+textarea{
+    resize:none;
+}
+
+/* Two Column Layout */
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+}
+
+/* Readonly Fee */
+input[readonly]{
+    background:#f5ece2;
+    color:#7a4d29;
+    font-weight:600;
+    cursor:not-allowed;
+}
+
+/* Button */
+.book-btn{
+    width:100%;
+    margin-top:10px;
+    padding:15px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#c4894d,#9e6736);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 10px 20px rgba(158,103,54,0.22);
+}
+
+.book-btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 16px 25px rgba(158,103,54,0.28);
+    background:linear-gradient(135deg,#b67b45,#8f5a2d);
+}
+
+/* Animation */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Mobile */
+@media(max-width:600px){
+    .form-box{
+        padding:26px 20px;
+        border-radius:22px;
+    }
+
+    h2{
+        font-size:24px;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="form-box">
+
+<h2>Book Online Consultation</h2>
+
+<form id="consultForm">
+
+<div class="form-group">
+<label>Owner Name</label>
+<input type="text" placeholder="Enter your name" required>
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input type="email" placeholder="Enter your email" required>
+</div>
+
+<div class="form-group">
+<label>Phone Number</label>
+<input type="tel" placeholder="Enter phone number" required>
+</div>
+
+<div class="form-group">
+<label>Pet Name</label>
+<input type="text" placeholder="Enter pet name" required>
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>Pet Type</label>
+<select required>
+<option>Dog</option>
+<option>Cat</option>
+<option>Bird</option>
+<option>Rabbit</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Select Doctor</label>
+<select required>
+<option>Dr Maria James</option>
+<option>Dr Stephen Parkar</option>
+<option>Dr Rachel Smith</option>
+</select>
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="form-group">
+<label>Select Date</label>
+<input type="date" required>
+</div>
+
+<div class="form-group">
+<label>Select Time Slot</label>
+<select required>
+<option>9:00 AM - 9:45 AM</option>
+<option>10:00 AM - 11:00 AM</option>
+<option>11:30 AM - 12:00 PM</option>
+<option>2:00 PM - 3:00 PM</option>
+<option>4:00 PM - 4:30 PM</option>
+<option>6:00 PM - 6:45 PM</option>
+</select>
+</div>
+
+</div>
+
+<div class="form-group">
+<label>Describe Pet Problem</label>
+<textarea rows="3" placeholder="Describe symptoms or issue"></textarea>
+</div>
+
+<div class="form-group">
+<label>Consultation Fee</label>
+<input type="text" value="₹500" readonly>
+</div>
+
+<button type="submit" class="book-btn">
+Confirm Booking & Pay
+</button>
+
+</form>
+
+</div>
+
+<script>
+
+
+document.getElementById("consultForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+alert("Appointment slot reserved successfully! Redirecting to payment...");
+
+window.location.href = "payment.html";
+
+});
+
+</script>
+
+</body>
+</html>

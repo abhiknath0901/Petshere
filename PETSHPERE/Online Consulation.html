@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Consultation Sessions</title>
+  <style>
+   *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    width:100%;
+    padding:18px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    box-shadow:0 5px 18px rgba(62,39,35,0.15);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+/* LOGO */
+.logo{
+    font-size:2rem;
+    font-weight:700;
+    color:#ffffff;
+}
+
+.logo span{
+    color:#f8f3e9;
+    font-weight:400;
+}
+
+/* NAV */
+nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    text-decoration:none;
+    color:#ffffff;
+    font-size:16px;
+    font-weight:600;
+    padding:10px 16px;
+    border-radius:10px;
+    transition:0.3s ease;
+}
+
+nav a:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+/* MAIN SECTION */
+.video-section{
+    text-align:center;
+    padding:70px 8%;
+}
+
+.video-section h1{
+    font-size:2.8rem;
+    color:#5d4037;
+    margin-bottom:12px;
+}
+
+.video-section p{
+    color:#6c584c;
+    font-size:17px;
+    margin-bottom:45px;
+}
+
+/* DOCTOR GRID */
+.doctor-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+.doctor-card{
+    background:#ffffff;
+    padding:30px 24px;
+    border-radius:22px;
+    box-shadow:0 12px 30px rgba(62,39,35,0.10);
+    text-align:center;
+    transition:0.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.doctor-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+.doctor-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 40px rgba(62,39,35,0.16);
+}
+
+/* IMAGE */
+.doctor-card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:18px;
+    border:4px solid #d7c1ad;
+    box-shadow:0 8px 18px rgba(0,0,0,0.10);
+}
+
+/* NAME */
+.doctor-card h3{
+    font-size:22px;
+    color:#5d4037;
+    margin-bottom:6px;
+}
+
+/* SPECIALITY */
+.spec{
+    color:#7a6759;
+    font-size:15px;
+    margin-bottom:18px;
+}
+
+/* SLOT BOX */
+.slots{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    margin-bottom:22px;
+}
+
+.slots span{
+    background:#f8f3e9;
+    border:1px solid #e6d5c7;
+    padding:10px;
+    border-radius:10px;
+    font-size:14px;
+    color:#5d4037;
+    font-weight:500;
+}
+
+/* BUTTON */
+.call-btn{
+    display:inline-block;
+    width:100%;
+    padding:13px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:white;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.call-btn:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+header{
+    padding:18px 5%;
+    flex-direction:column;
+    gap:15px;
+}
+
+.logo{
+    font-size:1.7rem;
+}
+
+.video-section{
+    padding:50px 5%;
+}
+
+.video-section h1{
+    font-size:2rem;
+}
+
+nav{
+    justify-content:center;
+}
+
+nav a{
+    font-size:14px;
+}
+
+}
+  </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Pet<span>Medical</span></div>
+    <nav>
+        <a href="Home page for doc.html">Home</a>
+        <a href="Ambulance.html">Ambulance booking</a>
+        <a href="#">Support</a>
+    </nav>
+</header>
+
+<section class="video-section">
+    <h1>Live Video Consultation Sessions</h1>
+    <p>Select a veterinarian and join the available video call slot.</p>
+
+    <div class="doctor-container">
+
+        <!-- Doctor 1 -->
+        <div class="doctor-card">
+            <img src="vet doctor.webp" alt="Doctor Image">
+            <h3>Dr Maria James</h3>
+            <p class="spec">Veterinary Surgeon</p>
+
+            <div class="slots">
+                <span>10:00 AM - 11:00 AM</span>
+                <span>2:00 PM - 3:00 PM</span>
+            </div>
+
+            <a href="#" class="call-btn">Join Video Call</a>
+        </div>
+
+        <!-- Doctor 2 -->
+        <div class="doctor-card">
+            <img src="vet doc with cat.webp" alt="Doctor Image">
+            <h3>Dr.Stephen Parkar</h3>
+            <p class="spec">Pet Wellness Specialist</p>
+
+            <div class="slots">
+                <span>11:30 AM - 12:00 PM</span>
+                <span>4:00 PM - 4:30 PM</span>
+            </div>
+
+            <a href="#" class="call-btn">Join Video Call</a>
+        </div>
+
+        <!-- Doctor 3 -->
+        <div class="doctor-card">
+            <img src="rachel doc.avif" alt="Doctor Image">
+            <h3>Dr. Rachel Smith</h3>
+            <p class="spec">Emergency Care Expert</p>
+
+            <div class="slots">
+                <span>9:00 AM - 9:45 AM</span>
+                <span>6:00 PM - 6:45 PM</span>
+            </div>
+
+            <a href="#" class="call-btn">Join Video Call</a>
+        </div>
+
+    </div>
+</section>
+
+</body>
+</html>

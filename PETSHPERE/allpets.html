@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Pets</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f8f3e9;
+  color:#4b2e1e;
+}
+
+/* ── HEADER ── */
+header{
+  background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+  color:white;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(62,39,35,0.2);
+  position:relative;
+}
+
+/* ── CART ICON ── */
+.cart-icon-wrap{
+  position:absolute;
+  top:50%;
+  right:25px;
+  transform:translateY(-50%);
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+}
+
+.cart-icon{
+  width:46px;
+  height:46px;
+  background:rgba(255,255,255,0.2);
+  border:2px solid rgba(255,255,255,0.5);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  backdrop-filter:blur(4px);
+  position:relative;
+}
+
+.cart-icon:hover{
+  background:rgba(255,255,255,0.35);
+}
+
+#cartBadge{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:#e53935;
+  color:#fff;
+  font-size:11px;
+  font-weight:700;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  border:2px solid white;
+}
+
+/* CONTENT */
+.container{
+  padding:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.controls{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+  justify-content:center;
+}
+
+input,select{
+  padding:12px 15px;
+  border-radius:25px;
+  border:2px solid #d4c7be;
+  background:white;
+  outline:none;
+  transition:0.3s;
+}
+
+input:focus,select:focus{
+  border-color:#8d6e63;
+  transform:scale(1.05);
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:#ffffff;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(62,39,35,0.25);
+  transition:all 0.3s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  transition:0.4s;
+}
+
+.card:hover img{
+  transform:scale(1.1);
+}
+
+.card-content{
+  padding:18px;
+}
+
+.card h3{
+  margin-bottom:8px;
+  font-size:20px;
+}
+
+.card p{
+  font-size:14px;
+  color:#807266;
+}
+
+.tag{
+  display:inline-block;
+  margin-top:10px;
+  padding:5px 10px;
+  border-radius:15px;
+  background:#f8f3e9;
+  border:2px solid #a1887f;
+  font-size:12px;
+}
+
+.price{
+  display:block;
+  margin-top:10px;
+  font-size:18px;
+  font-weight:600;
+  color:#5d4037;
+}
+
+/* ✅ BUTTON STACK (MATCHED WITH SMALL PETS) */
+.btn-stack{
+  margin-top:12px;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.btn-row{
+  display:flex;
+  gap:8px;
+}
+
+.btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  color:white;
+  cursor:pointer;
+  font-weight:600;
+  font-size:13px;
+  text-decoration:none;
+  background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+.btn:hover{
+  background:#5d4037;
+}
+
+/* FULL WIDTH ADD TO CART */
+.btn-cart{
+  width:100%;
+  padding:10px;
+  border-radius:20px;
+  border:2px solid #8d6e63;
+  background:white;
+  color:#5d4037;
+  cursor:pointer;
+  font-weight:600;
+  font-size:13px;
+}
+
+.btn-cart.added{
+  background:#e8f5e9;
+  border-color:#388e3c;
+  color:#2e7d32;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Find Your Perfect Pet</h1>
+  <p>Browse all pets with filters, sorting and pricing</p>
+
+  <a class="cart-icon-wrap" href="cart.html">
+    <div class="cart-icon">
+      🛒
+      <span id="cartBadge"></span>
+    </div>
+  </a>
+</header>
+
+<div class="container">
+
+  <div class="controls">
+    <input type="text" id="search" placeholder="🔍 Search pets...">
+
+    <select id="typeFilter">
+      <option value="all">All Types</option>
+      <option value="Dog">Dog</option>
+      <option value="Cat">Cat</option>
+      <option value="Small">Small Pet</option>
+    </select>
+
+    <select id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="low">Below ₹5000</option>
+      <option value="mid">₹5000 - ₹15000</option>
+      <option value="high">Above ₹15000</option>
+    </select>
+
+    <select id="sort">
+      <option value="default">Sort By</option>
+      <option value="low">Price Low → High</option>
+      <option value="high">Price High → Low</option>
+    </select>
+  </div>
+
+  <div class="grid" id="petContainer"></div>
+
+</div>
+
+<script src="petsdata.js"></script>
+<script src="cart.js"></script>
+
+<script>
+const container = document.getElementById("petContainer");
+
+function display(list){
+  container.innerHTML = "";
+
+  list.forEach(p => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${p.img}" alt="${p.name}">
+        <div class="card-content">
+          <h3>${p.name}</h3>
+          <p>${p.desc}</p>
+          <span class="tag">${p.type}</span>
+          <span class="price">₹${p.price.toLocaleString()}</span>
+
+          <!-- ✅ MATCHED BUTTON LAYOUT -->
+          <div class="btn-stack">
+            <div class="btn-row">
+              <a class="btn" href="details.html?id=${p.id}">View Details</a>
+              <a class="btn" href="address page.html?id=${p.id}">Buy Now</a>
+            </div>
+            <button class="btn-cart" onclick="handleAddToCart(${p.id}, this)">+ Add to Cart</button>
+          </div>
+
+        </div>
+      </div>
+    `;
+  });
+}
+
+function handleAddToCart(petId, btn){
+  const pet = allPets.find(p => p.id === petId);
+  if(!pet) return;
+
+  addToCart(pet);
+
+  btn.textContent = "✓ Added!";
+  btn.classList.add("added");
+
+  setTimeout(() => {
+    btn.textContent = "+ Add to Cart";
+    btn.classList.remove("added");
+  }, 2000);
+}
+
+function applyFilters(){
+  let search = document.getElementById("search").value.toLowerCase();
+  let type = document.getElementById("typeFilter").value;
+  let price = document.getElementById("priceFilter").value;
+  let sort = document.getElementById("sort").value;
+
+  let data = allPets.filter(p => {
+    let matchSearch = p.name.toLowerCase().includes(search);
+    let matchType = type === "all" ||
+      (type === "Small"
+        ? ["Bird","Fish","Rabbit","Hamster"].includes(p.type)
+        : p.type === type);
+
+    let matchPrice =
+      price === "all" ||
+      (price === "low" && p.price < 5000) ||
+      (price === "mid" && p.price >= 5000 && p.price <= 15000) ||
+      (price === "high" && p.price > 15000);
+
+    return matchSearch && matchType && matchPrice;
+  });
+
+  if(sort === "low") data.sort((a,b) => a.price - b.price);
+  if(sort === "high") data.sort((a,b) => b.price - a.price);
+
+  display(data);
+}
+
+document.getElementById("search").addEventListener("input", applyFilters);
+document.getElementById("typeFilter").addEventListener("change", applyFilters);
+document.getElementById("priceFilter").addEventListener("change", applyFilters);
+document.getElementById("sort").addEventListener("change", applyFilters);
+
+display(allPets);
+</script>
+
+</body>
+</html>

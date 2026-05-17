@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat Care Blogs</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color: #4b2e1e;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h2{
+    letter-spacing:2px;
+}
+
+nav input{
+    padding:7px;
+    border-radius:20px;
+    border:2px solid #d4c7be;
+    width:200px;
+}
+
+/* HERO */
+.hero{
+    position:relative;
+    height:60vh;
+    background:url('images/catcare.jpg') center/cover;
+    background-position: center 64%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(93,64,55,0.6);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.hero button{
+    padding:10px 20px;
+    border:none;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+/* CONTAINER */
+.container{
+    padding:40px 60px;
+}
+
+/* MODERN BLOG GRID */
+.blogs{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap:25px;
+}
+
+/* BLOG CARD */
+.blog{
+    background:#ffffff;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s ease;
+}
+
+.blog:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+.blog img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.blog-content{
+    padding:15px;
+}
+
+.blog-content h3{
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.blog-content p{
+    font-size:14px;
+    color:#6c584c;
+}
+
+/* TAG */
+.blog-tag{
+    position:absolute;
+    top:10px;
+    left:10px;
+    background:#8d6e63;
+    color:white;
+    padding:5px 10px;
+    font-size:12px;
+    border-radius:20px;
+}
+
+/* FOOTER */
+footer{
+    background:#5d4037;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>PetSphere Blogs</h2>
+    <input type="text" id="search" placeholder="Search article...">
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>The Ultimate Guide to Cat Care</h1>
+        <button onclick="scrollToBlogs()">Explore Articles</button>
+    </div>
+</section>
+
+<!-- BLOG SECTION -->
+<div class="container">
+<div class="blogs" id="blogSection">
+
+    <div class="blog">
+        <div style="position:relative;">
+            <span class="blog-tag">Grooming</span>
+            <img src="images/catgroom1.jpg">
+        </div>
+        <div class="blog-content">
+            <h3>
+                <a href="catgrooming.html" style="text-decoration:none; color:black;">
+                    Daily Grooming Routine
+                </a>
+            </h3>
+            <p>Learn how regular brushing keeps your cat healthy and reduces shedding problems.</p>
+        </div>
+    </div>
+
+    <div class="blog">
+        <div style="position:relative;">
+            <span class="blog-tag">Nutrition</span>
+            <img src="images/catfood1.jpg">
+        </div>
+        <div class="blog-content">
+            <h3>
+                <a href="catnutrition.html" style="text-decoration:none; color:black;">
+                    Cat Nutrition Guide
+                </a>
+            </h3>
+            <p>Understand the importance of protein-rich food and balanced diet for cats.</p>
+        </div>
+    </div>
+
+    <div class="blog">
+        <div style="position:relative;">
+            <span class="blog-tag">Lifestyle</span>
+            <img src="images/cat1.jpg">
+        </div>
+        <div class="blog-content">
+            <h3>
+                <a href="indoorvsoutdoor.html" style="text-decoration:none; color:black;">
+                    Indoor vs Outdoor Cats
+                </a>
+            </h3>
+            <p>Discover which lifestyle is safer and healthier for your beloved pet.</p>
+        </div>
+    </div>
+
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+© PetSphere | All rights reserved
+</footer>
+
+<script>
+// Scroll
+function scrollToBlogs(){
+    document.getElementById("blogSection").scrollIntoView({behavior:"smooth"});
+}
+
+// Search
+document.getElementById("search").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    let blogs = document.querySelectorAll(".blog");
+
+    blogs.forEach(blog=>{
+        let title = blog.querySelector("h3").innerText.toLowerCase();
+        blog.style.display = title.includes(value) ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>

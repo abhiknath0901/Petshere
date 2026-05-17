@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vet Profiles - PetSphere</title>
+
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:linear-gradient(135deg,#f8f3e9,#e8d7c5);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:50px 20px;
+}
+
+/* GRID */
+.vet-grid{
+    width:100%;
+    max-width:1200px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+.profile-card{
+    background:rgba(255,255,255,0.88);
+    border-radius:25px;
+    padding:35px 28px;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(62,39,35,0.12);
+    transition:0.35s ease;
+    animation:fadeUp 0.8s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.profile-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(62,39,35,0.18);
+}
+
+/* TOP LINE */
+.profile-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+/* IMAGE */
+.profile-img{
+    width:170px;
+    height:170px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #d7c1ad;
+    margin-bottom:22px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.12);
+}
+
+/* NAME */
+h1{
+    font-size:28px;
+    color:#5d4037;
+    margin-bottom:8px;
+}
+
+/* SPECIALITY */
+.position{
+    font-size:15px;
+    color:#7a6759;
+    margin-bottom:18px;
+    font-weight:500;
+}
+
+/* DIVIDER */
+.divider{
+    width:70%;
+    height:3px;
+    margin:18px auto;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    border-radius:20px;
+}
+
+/* INFO BOX */
+.info-box{
+    background:#fdf8f4;
+    padding:16px;
+    border-radius:15px;
+    margin:15px 0;
+    text-align:left;
+    border:1px solid #eee1d6;
+}
+
+.info-box h3{
+    color:#5d4037;
+    margin-bottom:6px;
+    font-size:16px;
+}
+
+.info-box p{
+    color:#6c584c;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* BUTTON */
+.appointment-btn{
+    display:inline-block;
+    margin-top:18px;
+    padding:14px 32px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:#fff;
+    text-decoration:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s ease;
+    box-shadow:0 8px 18px rgba(62,39,35,0.15);
+}
+
+.appointment-btn:hover{
+    background:#5d4037;
+    transform:translateY(-3px);
+    box-shadow:0 12px 22px rgba(62,39,35,0.22);
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(35px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+body{
+    padding:30px 15px;
+}
+
+.profile-card{
+    padding:28px 20px;
+}
+
+.profile-img{
+    width:140px;
+    height:140px;
+}
+
+h1{
+    font-size:24px;
+}
+
+.appointment-btn{
+    width:100%;
+}
+
+}
+
+    </style>
+
+</head>
+<body>
+
+<div class="vet-grid">
+
+    <!-- DOCTOR 1 -->
+    <div class="profile-card">
+        <img src="images/vet doctor.webp" class="profile-img" alt="Vet">
+        <h1>Dr. Maria James</h1>
+        <p class="position">Certified Veterinary Surgeon</p>
+
+        <div class="divider"></div>
+
+        <div class="info-box">
+            <h3>Experience</h3>
+            <p>10+ years in animal surgery & treatment.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Timings</h3>
+            <p>Mon – Fri: 10AM – 5PM</p>
+        </div>
+
+        <a href="Appointment booking form.html" class="appointment-btn">Book Appointment</a>
+    </div>
+
+    <!-- DOCTOR 2 -->
+    <div class="profile-card">
+        <img src="images/vet doc with cat.webp" class="profile-img" alt="Vet">
+        <h1>Dr. Stephen Parker</h1>
+        <p class="position">Pet Dental & Skin Specialist</p>
+
+        <div class="divider"></div>
+
+        <div class="info-box">
+            <h3>Experience</h3>
+            <p>7+ years in dermatology & dental care.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Timings</h3>
+            <p>Tue – Sat: 11AM – 4PM</p>
+        </div>
+
+        <a href="Appointment booking form.html" class="appointment-btn">Book Appointment</a>
+    </div>
+
+    <!-- DOCTOR 3 -->
+    <div class="profile-card">
+        <img src="images/rachel doc.avif" class="profile-img" alt="Vet">
+        <h1>Dr. Rachel Smith</h1>
+        <p class="position">Emergency & Critical Care Vet</p>
+
+        <div class="divider"></div>
+
+        <div class="info-box">
+            <h3>Experience</h3>
+            <p>8+ years in emergency pet care.</p>
+        </div>
+
+        <div class="info-box">
+            <h3>Timings</h3>
+            <p>Mon – Sun: 24/7 Emergency</p>
+        </div>
+
+        <a href="Appointment booking form.html" class="appointment-btn">Book Appointment</a>
+    </div>
+
+</div>
+
+</body>
+</html>

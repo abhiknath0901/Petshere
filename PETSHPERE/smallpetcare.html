@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small Pet Care</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h2{
+    font-weight:600;
+}
+
+nav input{
+    padding:7px;
+    border-radius:20px;
+    border:2px solid #d4c7be;
+    width:180px;
+    outline: none;
+}
+
+nav input:focus{
+    border-color:#8d6e63;
+}
+
+/* HERO */
+.hero{
+    background:url('images/smallpet.jpg') center/cover;
+    background-size: cover;
+    background-position: center 45%;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+    position:relative;
+    height:35vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction: column;
+}
+
+.hero::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.hero *{
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1{
+    font-size:36px;
+    margin-bottom:12px;
+    line-height: 1.2;
+}
+
+.hero p{
+    font-size:16px;
+}
+
+/* FEATURED BLOGS SCROLL */
+.featured-blogs{
+    display:flex;
+    overflow-x:auto;
+    gap:20px;
+    padding:30px 50px;
+}
+
+.featured-blogs::-webkit-scrollbar{
+    height:8px;
+}
+
+.featured-blogs::-webkit-scrollbar-thumb{
+    background:#8d6e63;
+    border-radius:4px;
+}
+
+.blog-card{
+    min-width:280px;
+    background:white;
+    border-radius:10px;
+    box-shadow:0 15px 40px rgba(62,39,35,0.25);
+    overflow:hidden;
+    flex-shrink:0;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.blog-link{
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.blog-card:hover{
+    transform:translateY(-8px);
+}
+
+.blog-card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.blog-card .content{
+    padding:15px;
+}
+
+.blog-card h3{
+    font-size:18px;
+    margin-bottom:10px;
+    color: #5d4037;
+}
+
+.blog-card p{
+    font-size:14px;
+    color:#807266;
+}
+
+/* FOOTER */
+footer{
+    background:#5d4037;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .featured-blogs{
+        padding:20px;
+    }
+
+    nav input{
+        width:120px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <h2>PetSphere Blogs</h2>
+    <input type="text" id="search" placeholder="Search blogs...">
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Small Pet Care Tips</h1>
+    <p>Learn quick and easy tips to keep your pets healthy and happy!</p>
+</section>
+
+<!-- FEATURED BLOGS -->
+<section class="featured-blogs" id="blogs">
+
+    <div class="blog-card">
+        <a href="feedingsmallpet.html" class="blog-link">
+        <img src="images/smallpetfood.jpg">
+        <div class="content">
+            <h3>Feeding Your Small Pets</h3>
+            <p>Discover the best diet and feeding schedule for your rabbits, hamsters, and guinea pigs.</p>
+        </div>
+        </a>
+    </div>
+
+    <div class="blog-card">
+        <a href="pethygiene.html" class="blog-link">
+        <img src="images/smallpetgroom2.jpg">
+        <div class="content">
+            <h3>Pet Hygiene Essentials</h3>
+            <p>Keep your pets clean and healthy with simple grooming routines and tips.</p>
+        </div>
+        </a>
+    </div>
+
+    <div class="blog-card">
+        <a href="exercise&playtime.html" class="blog-link">
+        <img src="images/smallpetplay.jpg">
+        <div class="content">
+            <h3>Exercise and Playtime</h3>
+            <p>Fun and safe exercises to keep your small pets active and happy every day.</p>
+        </div>
+        </a>
+    </div>
+
+</section>
+
+<footer>
+© PetSphere | All rights reserved.
+</footer>
+
+<script>
+// Search
+document.getElementById("search").addEventListener("keyup", function(){
+    let value = this.value.toLowerCase();
+    let blogs = document.querySelectorAll(".blog-card");
+    blogs.forEach(blog=>{
+        let title = blog.querySelector("h3").innerText.toLowerCase();
+        blog.style.display = title.includes(value) ? "block" : "none";
+    });
+});
+</script>
+
+</body>
+</html>

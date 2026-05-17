@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pet Ambulance Request - PetSphere</title>
+    <style>
+      
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+
+body{
+    background: linear-gradient(135deg, #b58b5a, #f5e8d3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.emergency-card{
+    width: 420px;
+    background: rgba(255, 255, 255, 0.80);
+    backdrop-filter: blur(15px);
+    padding: 35px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease;
+}
+
+
+h1{
+    text-align: center;
+    color: #5a3b1e;
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+
+.subtitle{
+    text-align: center;
+    color: #7a5a3a;
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+
+.divider{
+    width: 80%;
+    height: 2px;
+    background: #d0b08a;
+    margin: 15px auto;
+    border-radius: 10px;
+}
+
+
+label{
+    color: #4a3321;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+
+input, select, textarea{
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 15px;
+    border-radius: 8px;
+    border: 1px solid #bda188;
+    background: #fff7ef;
+    font-size: 14px;
+}
+
+textarea{
+    height: 80px;
+    resize: none;
+}
+
+
+.request-btn{
+    width: 100%;
+    background: #8b5e3c;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.request-btn:hover{
+    background: #6e4a2d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+.call-btn{
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    padding: 12px;
+    background: #d09e65;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.call-btn:hover{
+    background: #b6814e;
+}
+
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(40px);}
+    to   {opacity: 1; transform: translateY(0);}
+}
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="emergency-card">
+
+        <h1>Pet Emergency Ambulance</h1>
+        <p class="subtitle">Request immediate medical transportation for your pet.</p>
+
+        <div class="divider"></div>
+
+        <form>
+
+            <label>Pet Name</label>
+            <input type="text" placeholder="Enter your pet's name" required>
+
+            <label>Your Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Contact Number</label>
+            <input type="tel" placeholder="+91 00000 00000" required>
+
+            <label>Pickup Location</label>
+            <input type="text" placeholder="Enter current location" required>
+
+            <label>Select Emergency Type</label>
+            <select required>
+                <option>Severe Injury</option>
+                <option>Breathing Issues</option>
+                <option>Accident / Trauma</option>
+                <option>Unconscious / Not Moving</option>
+                <option>Poisoning</option>
+                <option>Other Emergency</option>
+            </select>
+
+            <label>Additional Notes</label>
+            <textarea placeholder="Describe condition..."></textarea>
+
+            <button type="submit" class="request-btn">Request Ambulance</button>
+
+        </form>
+
+        <a href="tel:108" class="call-btn">📞 Call Emergency Hotline</a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

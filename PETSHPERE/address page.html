@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Delivery Address - PetSphere</title>
+
+<style>
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: #f5efe6;
+  margin: 0;
+}
+
+.header {
+  background: #8d6e63;
+  color: white;
+  padding: 15px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.container {
+  max-width: 500px;
+  margin: 30px auto;
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #5d4037;
+  font-weight: 600;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: #8d6e63;
+  outline: none;
+}
+
+.proceed-btn {
+  width: 100%;
+  padding: 12px;
+  background: #8d6e63;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.proceed-btn:hover {
+  background: #6d4c41;
+}
+
+.back {
+  display: block;
+  margin-top: 15px;
+  text-align: center;
+  text-decoration: none;
+  color: #8d6e63;
+  font-size: 14px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  Add Delivery Address
+</div>
+
+<div class="container">
+
+  <div class="card">
+
+    <div class="title">
+      📍 Enter Your Address
+    </div>
+
+    <!-- Form Starts -->
+    <form action="Payment Details.html">
+
+      <input type="text" placeholder="Full Name" required>
+
+      <input type="tel" placeholder="Mobile Number" required>
+
+      <input type="text" placeholder="Pincode" required>
+
+      <input type="text" placeholder="House No., Building Name" required>
+
+      <input type="text" placeholder="Street / Area / Locality" required>
+
+      <input type="text" placeholder="City" required>
+
+      <select required>
+        <option value="">Select State</option>
+        <option>West Bengal</option>
+        <option>Maharashtra</option>
+        <option>Delhi</option>
+        <option>Karnataka</option>
+      </select>
+
+      <textarea rows="3" placeholder="Landmark (Optional)"></textarea>
+
+      <button type="submit" class="proceed-btn">
+        Proceed to Payment
+      </button>
+
+    </form>
+    <!-- Form Ends -->
+
+    <a href="index2.html" class="back">
+      ← Back to Home
+    </a>
+
+  </div>
+
+</div>
+
+</body>
+</html>

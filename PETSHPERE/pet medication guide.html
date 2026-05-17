@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pet Medication Guide</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    padding-bottom:60px;
+    line-height:1.6;
+}
+
+/* MAIN TITLE */
+h1{
+    text-align:center;
+    margin-top:30px;
+    font-size:2.6rem;
+    color:#5d4037;
+    font-weight:700;
+}
+
+/* SECTION TITLE */
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#5d4037;
+    font-size:2rem;
+}
+
+/* CONTAINER BOX */
+.section-box{
+    width:90%;
+    max-width:950px;
+    margin:30px auto;
+    background:#ffffff;
+    padding:32px;
+    border-radius:24px;
+    box-shadow:0 15px 35px rgba(62,39,35,0.10);
+    position:relative;
+    overflow:hidden;
+}
+
+.section-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+/* SEARCH */
+.search-container{
+    position:relative;
+    margin-bottom:22px;
+}
+
+.search-container input{
+    width:100%;
+    padding:14px 18px;
+    border-radius:30px;
+    border:2px solid #d8c3b0;
+    font-size:16px;
+    outline:none;
+    background:#fffaf4;
+    transition:0.3s ease;
+}
+
+.search-container input:focus{
+    border-color:#8d6e63;
+    box-shadow:0 0 12px rgba(141,110,99,0.18);
+    background:#ffffff;
+}
+
+.search-container input::placeholder{
+    color:#9a8776;
+}
+
+/* MEDICINE CARD */
+.medicine-card{
+    background:#f8f3e9;
+    padding:16px 18px;
+    border-radius:14px;
+    margin:14px 0;
+    border-left:6px solid #8d6e63;
+    transition:0.3s ease;
+}
+
+.medicine-card:hover{
+    transform:translateX(6px);
+    background:#f4ece4;
+}
+
+.medicine-card h3{
+    color:#5d4037;
+    margin-bottom:6px;
+}
+
+.medicine-card p{
+    color:#6c584c;
+    font-size:15px;
+}
+
+/* FORM INPUTS */
+.calc-input{
+    width:100%;
+    padding:13px 15px;
+    margin:10px 0;
+    border-radius:12px;
+    border:2px solid #d8c3b0;
+    font-size:15px;
+    outline:none;
+    transition:0.3s ease;
+    background:#fffaf4;
+}
+
+.calc-input:focus{
+    border-color:#8d6e63;
+    background:#ffffff;
+}
+
+/* BUTTON */
+.calc-btn{
+    width:100%;
+    padding:14px;
+    margin-top:14px;
+    border:none;
+    border-radius:14px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.calc-btn:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+/* RESULT */
+.result-box{
+    margin-top:18px;
+    padding:14px;
+    background:#f8f3e9;
+    border-radius:12px;
+    color:#5d4037;
+    font-weight:700;
+    text-align:center;
+}
+
+/* WARNING LIST */
+.warning-list{
+    list-style:none;
+}
+
+.warning-list li{
+    margin:12px 0;
+    padding:14px 16px;
+    background:#fff3f3;
+    border-left:5px solid #c0392b;
+    border-radius:12px;
+    color:#8b3030;
+    font-weight:600;
+}
+
+/* CONDITION CARD */
+.condition-card{
+    background:#fffaf4;
+    padding:18px;
+    border-radius:16px;
+    margin:14px 0;
+    border:1px solid #eadbcc;
+    transition:0.3s ease;
+}
+
+.condition-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 22px rgba(62,39,35,0.08);
+}
+
+.condition-title{
+    font-size:19px;
+    font-weight:700;
+    margin-bottom:8px;
+    color:#5d4037;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+h1{
+    font-size:2rem;
+    padding:0 10px;
+}
+
+h2{
+    font-size:1.5rem;
+}
+
+.section-box{
+    width:94%;
+    padding:24px 18px;
+}
+
+.calc-btn{
+    font-size:16px;
+}
+
+}
+</style>
+
+</head>
+<body>
+
+<h1 style="text-align:center; margin-top:25px; color:#4f3b21;"> Pet Medication Guide
+</h1>
+
+
+<section class="section-box">
+<h2>Searchable Medicine Directory</h2>
+
+<div class="search-container">
+    <input type="text" id="searchInput" autocomplete="off" placeholder="Search medicine">
+</div>
+
+<div id="medicineList">
+    <div class="medicine-card">
+        <h3>Amoxicillin</h3>
+        <p>Antibiotic – Dogs & Cats</p>
+    </div>
+
+    <div class="medicine-card">
+        <h3>Carprofen</h3>
+        <p>Pain Relief – Dogs Only</p>
+    </div>
+
+    <div class="medicine-card">
+        <h3>Benadryl</h3>
+        <p>Allergies – Dogs & Cats</p>
+    </div>
+
+    <div class="medicine-card">
+        <h3>Fipronil</h3>
+        <p>Flea & Tick – Dogs & Cats</p>
+    </div>
+</div>
+</section>
+
+
+<section class="section-box">
+<h2>Safe Dosage Calculator</h2>
+
+<select id="species" class="calc-input">
+    <option value="">Select Species</option>
+    <option value="dog">Dog</option>
+    <option value="cat">Cat</option>
+</select>
+
+<input type="number" id="weight" class="calc-input" placeholder="Enter pet weight (kg)">
+<input type="number" id="age" class="calc-input" placeholder="Enter pet age (years)">
+
+<button class="calc-btn" onclick="calculateDosage()">Calculate Dosage</button>
+
+<p class="result-box" id="dosageResult"></p>
+</section>
+
+
+<section class="section-box">
+<h2> Emergency Medication Warnings</h2>
+<ul class="warning-list">
+    <li> Paracetamol – Toxic for cats</li>
+    <li>Ibuprofen – Dangerous for dogs & cats</li>
+    <li> Aspirin – Harmful if unsupervised</li>
+    <li> Human antidepressants</li>
+    <li> Sleeping pills</li>
+</ul>
+</section>
+
+<section class="section-box">
+<h2>Condition-Based Medication Guide</h2>
+
+<div class="condition-card">
+    <p class="condition-title">Pain & Inflammation</p>
+    Carprofen, Meloxicam
+</div>
+
+<div class="condition-card">
+    <p class="condition-title">Allergies</p>
+    Cetirizine, Benadryl
+</div>
+
+<div class="condition-card">
+    <p class="condition-title"> Vomiting</p>
+    Maropitant citrate
+</div>
+
+<div class="condition-card">
+    <p class="condition-title"> Deworming</p>
+    Albendazole, Praziquantel
+</div>
+
+<div class="condition-card">
+    <p class="condition-title"> Fleas & Ticks</p>
+    Fipronil, Selamectin
+</div>
+
+</section>
+
+
+
+
+<script>
+
+document.getElementById("searchInput").addEventListener("keyup", function(){
+    let filter = this.value.toLowerCase();
+    let cards = document.querySelectorAll(".medicine-card");
+
+    cards.forEach(card => {
+        let name = card.textContent.toLowerCase();
+        card.style.display = name.includes(filter) ? "block" : "none";
+    });
+});
+
+// DOSAGE FUNCTION
+function calculateDosage(){
+    let species = document.getElementById("species").value;
+    let weight = parseFloat(document.getElementById("weight").value);
+
+    if(!species || !weight){
+        document.getElementById("dosageResult").innerText = "Please enter all details.";
+        return;
+    }
+
+    let dosage = weight * (species === "dog" ? 5 : 3); 
+    document.getElementById("dosageResult").innerText =
+        "Recommended Dose: " + dosage + " mg (every 12 hours)";
+}
+</script>
+
+</body>
+</html>
+

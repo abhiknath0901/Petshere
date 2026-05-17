@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat Grooming</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:0px 60px;
+    height: 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img{
+    width: auto;
+    height: 110%;
+    object-fit: contain;
+}
+
+/* HEADER IMAGE */
+.header-image{
+    height:50vh;
+    background:url("images/catgroom.jpg") center/cover;
+    background-size: cover;
+    background-position: center 25%;
+    position:relative;
+}
+
+.header-image::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(93,64,55,0.6);;
+}
+
+.header-text{
+    position:absolute;
+    bottom:30px;
+    left:60px;
+    color:white;
+    z-index:2;
+}
+
+.header-text h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+/* MAIN ARTICLE */
+.container{
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.article-content p{
+    margin-bottom:20px;
+    color:#6c584c;
+}
+
+.article-content h2{
+    margin:30px 0 15px;
+}
+
+/* AUTHOR BOX */
+.author-box{
+    display:flex;
+    align-items:center;
+    background:#ffffff;
+    padding:20px;
+    border-radius:10px;
+    margin-top:40px;
+    box-shadow:0 10px 25px rgba(62,39,35,0.15);
+}
+
+.author-box img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    margin-right:20px;
+}
+
+/* RELATED POSTS */
+.related{
+    margin-top:50px;
+}
+
+.related h3{
+    margin-bottom:20px;
+}
+
+.related-posts{
+    display:flex;
+    gap:20px;
+}
+
+.related-card{
+    flex:1;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(62,39,35,0.15);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.related-card:hover{
+    transform:scale(1.05);
+}
+
+.related-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.related-card p{
+    padding:15px;
+}
+
+/* COMMENTS */
+.comments{
+    margin-top:50px;
+}
+
+.comments input, .comments textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:1px solid #d4c7be;
+    border-radius:5px;
+}
+
+.comments button{
+    padding:8px 15px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.comments button:hover{
+    background: #5d4037;
+}
+
+.comment-list{
+    margin-top:20px;
+}
+
+.comment{
+    background:white;
+    padding:10px;
+    margin-bottom:10px;
+    border-radius:5px;
+    box-shadow:0 5px 15px rgba(62,39,35,0.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#5d4037;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .related-posts{
+        flex-direction:column;
+    }
+
+    .header-text{
+        left:20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2 class="logo">
+        <img src="images/logo3.png" alt="PetSphere Logo">
+    </h2>
+
+    <a href="catcare.html">← Back to Blogs</a>
+</nav>
+
+<div class="header-image">
+    <div class="header-text">
+        <h1>Complete Guide to Cat Grooming</h1>
+        <p>Published on February 2026 | 5 min read</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="article-content">
+    <p>
+        Regular grooming is essential to keep your cat healthy, comfortable, and stress-free. It helps remove loose fur, reduces shedding, and prevents hairballs, which are very common in cats. Grooming also keeps your cat’s coat soft and shiny while allowing you to notice any skin problems, parasites, or unusual changes early. Even though cats are naturally clean animals, a little extra care from you makes a big difference in their overall well-being.
+    </p>
+
+    <h2>1. Brushing</h2>
+    <p>
+        Brushing your cat 2–3 times a week helps remove loose hair, dirt, and prevents knots from forming. For long-haired cats, daily brushing is highly recommended to avoid tangles and painful matting. It also reduces the amount of fur your cat swallows while grooming itself, which helps prevent hairballs. Use a soft brush or comb that suits your cat’s coat type, and always brush gently to keep your cat comfortable and relaxed.
+    </p>
+
+    <h2>2. Nail Trimming</h2>
+    <p>
+        Regular nail trimming is important to prevent overgrown claws that can cause discomfort or even injury. Trim your cat’s nails every few weeks using proper pet nail clippers. Be very careful not to cut too deep, as it can hurt your cat and cause bleeding. If your cat is not used to nail trimming, take it slow and calm, or consider getting help from a professional.
+    </p>
+
+    <h2>3. Bathing</h2>
+    <p>
+        Cats are naturally good at keeping themselves clean, so they usually do not need frequent baths. However, if your cat gets very dirty or comes into contact with something sticky or harmful, a bath may be necessary. Always use a mild cat-friendly shampoo and lukewarm water. Make sure to dry your cat properly after bathing to keep them comfortable and prevent them from catching a cold.
+    </p>
+</div>
+
+    <!-- AUTHOR -->
+    <div class="author-box">
+        <img src="https://randomuser.me/api/portraits/women/44.jpg">
+        <div>
+            <h4>Lanie - Pet Care Blogger</h4>
+            <p>Passionate about animal health and well-being. Sharing professional pet care tips.</p>
+        </div>
+    </div>
+
+    <!-- RELATED POSTS -->
+    <div class="related">
+        <h3>Related Articles</h3>
+        <div class="related-posts">
+            <div class="related-card">
+                <img src="images/catfood1.jpg">
+                <p>Healthy Diet for Cats</p>
+            </div>
+            <div class="related-card">
+                <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba">
+                <p>Indoor Cat Care Tips</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments">
+        <h3>Leave a Comment</h3>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="message" rows="4" placeholder="Write your comment..."></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <div class="comment-list" id="commentList"></div>
+    </div>
+
+</div>
+
+<footer>
+© PetSphere | All rights reserved
+</footer>
+
+<script>
+function addComment(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || message === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let commentBox = document.createElement("div");
+    commentBox.classList.add("comment");
+    commentBox.innerHTML = "<strong>" + name + ":</strong> <p>" + message + "</p>";
+
+    document.getElementById("commentList").appendChild(commentBox);
+
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+}
+</script>
+</body>
+</html>

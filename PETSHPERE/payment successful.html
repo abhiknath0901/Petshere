@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSphere | Payment Successful</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --cream:#f8efe6;
+    --light:#ead7c3;
+    --brown:#b57f52;
+    --dark:#7a5031;
+    --deep:#4c2f1f;
+    --green:#43b36a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f7ede4,#ead7c4,#d8b08b);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+/* Decorative Background */
+body::before,
+body::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.18);
+    z-index:0;
+}
+
+body::before{
+    width:320px;
+    height:320px;
+    top:-90px;
+    left:-80px;
+}
+
+body::after{
+    width:260px;
+    height:260px;
+    bottom:-70px;
+    right:-60px;
+}
+
+/* Card */
+.success-container{
+    position:relative;
+    z-index:1;
+    width:100%;
+    max-width:760px;
+    background:rgba(255,255,255,0.78);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.45);
+    border-radius:32px;
+    padding:55px 45px;
+    text-align:center;
+    box-shadow:0 25px 55px rgba(76,47,31,0.14);
+    animation:fadeUp .8s ease;
+}
+
+/* Entrance */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(35px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* GIF Style */
+.success-gif{
+    width:170px;
+    display:block;
+    margin:auto;
+    filter:drop-shadow(0 10px 20px rgba(67,179,106,0.18));
+    animation:fadeUp .8s ease;
+}
+
+/* Text */
+h1{
+    font-size:38px;
+    color:var(--deep);
+    margin-top:26px;
+    font-weight:700;
+    animation:slideUp .8s ease .4s both;
+}
+
+p{
+    margin-top:14px;
+    font-size:18px;
+    line-height:1.8;
+    color:#7b5a43;
+    animation:slideUp .9s ease .55s both;
+}
+
+@keyframes slideUp{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Button */
+.home-btn{
+    margin-top:30px;
+    padding:16px 42px;
+    border:none;
+    border-radius:18px;
+    background:linear-gradient(135deg,var(--brown),var(--dark));
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 16px 25px rgba(122,80,49,0.2);
+    animation:slideUp 1s ease .75s both;
+}
+
+.home-btn:hover{
+    transform:translateY(-4px);
+    background:linear-gradient(135deg,#a56f45,#5f3b24);
+    box-shadow:0 22px 30px rgba(122,80,49,0.28);
+}
+
+/* Mobile */
+@media(max-width:700px){
+    .success-container{
+        padding:42px 22px;
+        border-radius:24px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    .success-gif{
+        width:130px;
+    }
+
+    .home-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="success-container">
+
+    <!-- Success GIF -->
+    <img src="images/payment.gif" alt="Payment Success" class="success-gif">
+
+    <h1>Payment Successful!</h1>
+
+    <p>
+        Thank you for supporting PetSphere <br>
+        Your transaction has been completed successfully.
+    </p>
+
+    <button class="home-btn" onclick="window.location.href='index.html'">
+        Back to Home
+    </button>
+
+</div>
+
+</body>
+</html>

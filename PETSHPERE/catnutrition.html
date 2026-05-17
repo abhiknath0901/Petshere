@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat Nutrition Guide</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color: #4b2e1e;
+    line-height:1.7;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding: 0px 60px;
+    height: 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(rgba(93,64,55,0.7), rgba(93,64,55,0.7)),
+    url("images/catfood.jpg") center/cover;
+    background-size: cover;
+    background-position: center 50%;
+    position:relative;
+    height:55vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.header h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.header p{
+    font-size:14px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img{
+    width: auto;
+    height: 110%;
+    object-fit: contain;
+}
+
+/* MAIN CONTENT */
+.container{
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.container h2{
+    margin:30px 0 15px;
+    color:#5d4037;
+}
+
+.container p{
+    margin-bottom:20px;
+    color:#6c584c;
+}
+
+/* HIGHLIGHT BOX */
+.tip-box{
+    background:#ffffff;
+    padding:20px;
+    border-left:5px solid #8d6e63;
+    margin:20px 0;
+    border-radius:5px;
+    box-shadow: 0 10px 25px rgba(62,39,35,0.1);
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:20px;
+}
+
+table th, table td{
+    border:1px solid #d4c7be;
+    padding:10px;
+    text-align:left;
+}
+
+table th{
+    background:#8d6e63;
+    color:white;
+}
+
+/* COMMENTS (FIXED) */
+.comments{
+    margin:50px auto 0;
+    max-width:900px;
+}
+
+.comments input, .comments textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:1px solid #d4c7be;
+    border-radius:5px;
+}
+
+.comments button{
+    padding:8px 15px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    border:none;
+    color:white;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.comments button:hover{
+    background:#5d4037;
+}
+
+.comment{
+    background:white;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    box-shadow:0 5px 15px rgba(62,39,35,0.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#5d4037;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .header h1{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2 class="logo">
+        <img src="images/logo3.png" alt="PetSphere Logo">
+    </h2>
+
+    <a href="catcare.html">← Back to Blogs</a>
+</nav>
+
+<div class="header">
+    <div>
+        <h1>Complete Cat Nutrition Guide</h1>
+        <p>Published February 2026 | 6 min read</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <p>
+        Providing proper nutrition is one of the most important responsibilities of a cat owner. A well-balanced diet keeps your cat active, supports healthy growth, and helps prevent many common diseases. Good nutrition not only improves your cat’s physical health but also keeps their coat shiny, their digestion smooth, and their energy levels stable. Feeding your cat the right food at the right time ensures they live a long and healthy life.
+    </p>
+
+    <h2>Essential Nutrients for Cats</h2>
+    <p>
+        Cats are obligate carnivores, which means their bodies are designed to get nutrients mainly from animal-based sources. Protein is extremely important for muscle development and overall strength. Along with protein, cats also need essential fats for energy, vitamins and minerals for immunity, and taurine, an important nutrient that supports heart and eye health.
+    </p>
+
+    <div class="tip-box">
+        ✔ Protein should be the main ingredient in your cat’s diet.<br>
+        ✔ Fresh and clean water must always be available.<br>
+        ✔ Avoid feeding chocolate, onions, and dairy products.
+    </div>
+
+    <h2>Daily Diet Chart</h2>
+
+    <table>
+        <tr>
+            <th>Age</th>
+            <th>Food Type</th>
+            <th>Frequency</th>
+        </tr>
+        <tr>
+            <td>Kitten (0-1 year)</td>
+            <td>High-protein kitten food</td>
+            <td>3-4 times daily</td>
+        </tr>
+        <tr>
+            <td>Adult (1-7 years)</td>
+            <td>Balanced dry + wet food</td>
+            <td>2 times daily</td>
+        </tr>
+        <tr>
+            <td>Senior (7+ years)</td>
+            <td>Low-calorie senior diet</td>
+            <td>2 small portions daily</td>
+        </tr>
+    </table>
+
+    <h2>Common Nutrition Mistakes</h2>
+    <p>
+        Overfeeding leads to obesity, which increases the risk of diabetes and joint problems. Always measure food portions according to weight and activity level.
+    </p>
+
+    <div class="tip-box">
+        💡 Tip: Consult a veterinarian before changing your cat's diet.
+    </div>
+
+    <!-- COMMENTS (NOW PROPERLY ALIGNED) -->
+    <div class="comments">
+        <h2>Leave a Comment</h2>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="message" rows="4" placeholder="Write your comment..."></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <div id="commentSection"></div>
+    </div>
+
+</div>
+
+<footer>
+© PetSphere | All rights reserved
+</footer>
+
+<script>
+function addComment(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || message === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let comment = document.createElement("div");
+    comment.classList.add("comment");
+    comment.innerHTML = "<strong>" + name + ":</strong><p>" + message + "</p>";
+
+    document.getElementById("commentSection").appendChild(comment);
+
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>

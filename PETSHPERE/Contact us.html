@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us | PetSphere</title>
+
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      background: #f8f3e9; /* soft beige */
+      color: #4b2e1e; /* deep brown text */
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(90deg, #8d6e63, #a1887f); /* brown gradient */
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #5d4037;
+      border-left: 5px solid #3e2723; /* dark brown */
+      padding-left: 10px;
+      margin-bottom: 1.2rem;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .contact-info {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .contact-info p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-info strong {
+      color: #3e2723;
+    }
+
+    form {
+      flex: 1;
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.8rem;
+      border: 2px solid #bca394;
+      border-radius: 8px;
+      background: #fdf8f2;
+      font-size: 1rem;
+      color: #4b2e1e; 
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #5d4037;
+      outline: none;
+    }
+
+    textarea {
+      height: 120px;
+      resize: none;
+    }
+
+    button {
+      padding: 0.9rem;
+      background: #a05c4851;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s ease;
+    }
+
+    button:hover {
+      background: #3e2723;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+       background: #5d4037;
+      color: white;
+      margin-top: 2rem;
+    }
+  </style>
+
+  </head>
+
+<body>
+
+  <header>
+    <h1><u>Contact Us</u></h1>
+    <p>We're here to help you and your pets anytime!</p>
+  </header>
+
+  <div class="container">
+    <h2>Get In Touch</h2>
+
+    <div class="contact-wrapper">
+
+      <!-- Contact Info -->
+      <div class="contact-info">
+        <p><strong>📍 Address:</strong><br> PetSphere Center, Kolkata, India</p>
+
+        <p><strong>📞 Phone:</strong><br> +91 98765 43210</p>
+
+        <p><strong>📧 Email:</strong><br> support@petsphere.com</p>
+
+        <p><strong>⏰ Working Hours:</strong><br> Mon – Sat: 9:00 AM – 6:00 PM</p>
+      </div>
+
+      <!-- Contact Form -->
+      <form>
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <input type="text" placeholder="Subject" />
+        <textarea placeholder="Your Message..." required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© PetSphere. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

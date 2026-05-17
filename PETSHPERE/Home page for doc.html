@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSphere Medical Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+       /* =========================
+   GLOBAL RESET
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* =========================
+   HEADER
+========================= */
+header{
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 5px 15px rgba(62,39,35,0.2);
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo-link{
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    gap:12px;
+}
+
+.logo-img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    transform: scale(1.6);
+}
+
+.logo-text{
+    font-size:2rem;
+    font-weight:700;
+    color:#fff;
+}
+
+.logo-text span{
+    color:#f8f3e9;
+    font-weight:400;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+nav a{
+    text-decoration:none;
+    color:#fff;
+    font-weight:600;
+    padding:10px 18px;
+    border-radius:10px;
+    transition:0.3s ease;
+}
+
+nav a:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+.hero{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:70px 8%;
+    gap:50px;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    flex:1;
+    min-width:300px;
+}
+
+.hero-text h1{
+    font-size:3rem;
+    color:#5d4037;
+    margin-bottom:20px;
+    line-height:1.2;
+}
+
+.hero-text p{
+    font-size:1.1rem;
+    color:#6c584c;
+    margin-bottom:30px;
+}
+
+.consult-btn{
+    display:inline-block;
+    text-decoration:none;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:14px 32px;
+    border-radius:12px;
+    font-weight:600;
+    transition:0.3s ease;
+}
+
+.consult-btn:hover{
+    background:#5d4037;
+    transform:translateY(-3px);
+}
+
+.hero-img{
+    flex:1;
+    text-align:center;
+    min-width:300px;
+}
+
+.hero-img img{
+    width:100%;
+    max-width:500px;
+    border-radius:25px;
+    box-shadow:0 15px 30px rgba(62,39,35,0.18);
+    animation:float 4s ease-in-out infinite;
+}
+
+/* =========================
+   SERVICES
+========================= */
+.services{
+    padding:70px 8%;
+    text-align:center;
+}
+
+.services h2{
+    font-size:2.4rem;
+    color:#5d4037;
+    margin-bottom:45px;
+}
+
+.service-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.service-link{
+    text-decoration:none;
+    color:inherit;
+}
+
+.service-card{
+    background:#ffffff;
+    padding:30px 20px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(62,39,35,0.12);
+    transition:0.3s ease;
+    height:100%;
+}
+
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 18px 35px rgba(62,39,35,0.18);
+}
+
+.service-card img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.service-card h3{
+    color:#5d4037;
+    margin-bottom:12px;
+}
+
+.service-card p{
+    color:#6c584c;
+    font-size:15px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+    background:#5d4037;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+@keyframes float{
+    0%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+    100%{transform:translateY(0);}
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+    gap:15px;
+}
+
+nav{
+    justify-content:center;
+}
+
+.hero{
+    flex-direction:column;
+    text-align:center;
+    padding:50px 5%;
+}
+
+.hero-text h1{
+    font-size:2.2rem;
+}
+
+.logo-text{
+    font-size:1.5rem;
+}
+
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="#" class="logo-link">
+        <img src="images/logo3.png" alt="PetSphere Logo" class="logo-img">
+        <span class="logo-text">PetSphere</span>
+    </a>
+    <nav>
+        <a href="Appointment booking form.html">Appointments</a>
+        <a href="Check emergency level.html">Emergency</a>
+        <a href="Online Consultation booking.html">Online Booking</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Expert Medical Care for Your Beloved Pets</h1>
+        <p>Online consultations, emergency support, and professional veterinary services at your fingertips.</p>
+        <a href="VET DOCTOR PROFILE.html" class="consult-btn">Consult Now</a>
+    </div>
+    <div class="hero-img">
+        <img src="images/doc doggy.jpeg">
+    </div>
+</section>
+
+<section class="services">
+    <h2>Our Medical Services</h2>
+    <div class="service-container">
+
+        <a href="Online Consulation.html" class="service-link">
+            <div class="service-card">
+                <img src="images/online consultation.jpeg" alt="Consultation">
+                <h3>Online Vet Consultation</h3>
+                <p>Chat or video call with certified veterinarians anytime.</p>
+            </div>
+        </a>
+
+        <a href="Check emergency level.html" class="service-link">
+            <div class="service-card">
+                <img src="images/emergency services.jpeg" alt="Emergency">
+                <h3>Emergency Support</h3>
+                <p>24/7 guidance for critical pet emergencies.</p>
+            </div>
+        </a>
+
+        <a href="Pet medication guide.html" class="service-link">
+            <div class="service-card">
+                <img src="images/pet medication.jpeg" alt="Medication">
+                <h3>Pet Medication Guide</h3>
+                <p>Safe dosage and medicine recommendations.</p>
+            </div>
+        </a>
+
+        <a href="Medical Reports.html" class="service-link">
+            <div class="service-card">
+                <img src="images/health checkup reports.jpeg" alt="Reports">
+                <h3>Health Check Reports</h3>
+                <p>Track your pet’s medical records and progress.</p>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+<footer>
+    <p>© PetSphere Medical Support | All Rights Reserved</p>
+</footer>
+
+</body>
+</html> 

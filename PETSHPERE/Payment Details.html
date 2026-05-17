@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSphere Payment Details</title>
+
+<style>
+   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root{
+    --cream:#f8efe5;
+    --light:#ead6c1;
+    --brown:#bb8659;
+    --dark:#7b5132;
+    --deep:#4e3120;
+    --glass:rgba(255,255,255,0.78);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f6ede4,#ead7c3,#d9b18a);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:22px;
+}
+
+/* MAIN CONTAINER */
+.payment-container{
+    width:100%;
+    max-width:1500px;
+    min-height:92vh;
+    display:grid;
+    grid-template-columns:34% 66%;
+    overflow:hidden;
+    border-radius:30px;
+    box-shadow:0 25px 55px rgba(78,49,32,0.15);
+    background:rgba(255,255,255,0.25);
+    backdrop-filter:blur(12px);
+}
+
+/* LEFT PANEL */
+.left{
+    background:linear-gradient(160deg,#7b5132,#5f3d27,#3d2418);
+    color:white;
+    padding:50px 38px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    position:relative;
+}
+
+.left::before{
+    content:"";
+    position:absolute;
+    width:250px;
+    height:250px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    top:-70px;
+    right:-80px;
+}
+
+.left::after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.04);
+    bottom:-50px;
+    left:-60px;
+}
+
+.left h2{
+    font-size:40px;
+    line-height:1.2;
+    margin-bottom:18px;
+    z-index:1;
+}
+
+.left p{
+    font-size:16px;
+    line-height:1.9;
+    opacity:.94;
+    max-width:320px;
+    margin-bottom:10px;
+    z-index:1;
+}
+
+/* RIGHT PANEL */
+.right{
+    background:var(--glass);
+    backdrop-filter:blur(18px);
+    padding:42px 48px;
+    overflow-y:auto;
+    animation:fadeUp .8s ease;
+}
+
+.right h3{
+    font-size:28px;
+    color:var(--deep);
+    margin-bottom:15px;
+    margin-top:0;
+}
+
+/* LABELS */
+label{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+    color:var(--deep);
+    margin:14px 0 8px;
+}
+
+/* INPUTS */
+input,
+select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:14px;
+    border:1.8px solid #d9b79a;
+    background:#fffaf6;
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+    transition:.3s ease;
+    outline:none;
+}
+
+input:focus,
+select:focus{
+    border-color:var(--brown);
+    background:white;
+    box-shadow:0 0 0 4px rgba(187,134,89,0.12);
+    transform:translateY(-1px);
+}
+
+/* ROW */
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+    margin-top:5px;
+}
+
+/* UPI BOX */
+.upi-box{
+    margin-top:18px;
+    padding:22px;
+    border-radius:22px;
+    background:#fff8f1;
+    border:1.8px dashed #c99d75;
+}
+
+/* BUTTON */
+button,
+.pay-btn{
+    width:100%;
+    border:none;
+    margin-top:28px;
+    padding:16px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#bb8659,#7b5132);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s ease;
+    box-shadow:0 15px 25px rgba(123,81,50,0.2);
+}
+
+button:hover,
+.pay-btn:hover{
+    transform:translateY(-3px);
+    background:linear-gradient(135deg,#aa754b,#603d26);
+    box-shadow:0 22px 32px rgba(123,81,50,0.28);
+}
+
+/* SCROLLBAR */
+.right::-webkit-scrollbar{
+    width:8px;
+}
+
+.right::-webkit-scrollbar-thumb{
+    background:#c8a07a;
+    border-radius:20px;
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(28px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+    .payment-container{
+        grid-template-columns:1fr;
+    }
+
+    .left{
+        padding:35px 24px;
+    }
+
+    .left h2{
+        font-size:34px;
+    }
+}
+
+@media(max-width:700px){
+    body{
+        padding:12px;
+    }
+
+    .right{
+        padding:28px 20px;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .right h3{
+        font-size:24px;
+    }
+
+    .left h2{
+        font-size:28px;
+    }
+}
+
+    
+</style>
+</head>
+
+<body>
+
+<div class="payment-container">
+
+    <!-- LEFT SIDE -->
+    <div class="left">
+        <h2>PetSphere Payment</h2>
+        <p>You're not just making a payment — you're making a paw-some difference!</p>
+        <p><strong>Trusted | Secure | Fast</strong></p>
+    </div>
+
+    <!-- PAYMENT FORM -->
+    <div class="right">
+        <h3>Card Payment</h3>
+
+        <label>Card Holder Name</label>
+        <input type="text" placeholder="Enter card holder name">
+
+        <label>Card Number</label>
+        <input type="text" maxlength="16" placeholder="1234 5678 9012 3456">
+
+        <div class="row">
+            <div style="flex:1;">
+                <label>Expiry Month</label>
+                <select>
+                    <option value="">MM</option>
+                    <option>01</option><option>02</option><option>03</option>
+                    <option>04</option><option>05</option><option>06</option>
+                    <option>07</option><option>08</option><option>09</option>
+                    <option>10</option><option>11</option><option>12</option>
+                </select>
+            </div>
+
+            <div style="flex:1;">
+                <label>Expiry Year</label>
+                <select>
+                    <option value="">YY</option>
+                    <option>2024</option><option>2025</option><option>2026</option>
+                    <option>2027</option><option>2028</option><option>2029</option>
+                </select>
+            </div>
+
+            <div style="flex:1;">
+                <label>CVV</label>
+                <input type="password" maxlength="3" placeholder="***">
+            </div>
+        </div>
+
+        <h3 style="margin-top: 30px;">UPI Payment</h3>
+
+        <div class="upi-box">
+            <label>Enter UPI ID</label>
+            <input type="text" placeholder="example@upi">
+        </div>
+
+       <a href="payment successful.html">
+    <button type="button" class="pay-btn">Proceed to Pay</button>
+</a>
+    </div>
+
+    
+
+  
+    <div class="image-side"></div>
+
+</div>
+
+
+
+</body>
+</html>

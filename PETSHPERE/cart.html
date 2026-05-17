@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Cart 🛒</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0; 
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#f8f3e9;
+  color:#4b2e1e;
+  min-height:100vh;
+}
+
+/* TOPBAR */
+.topbar{
+  background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+  padding:16px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  box-shadow:0 4px 15px rgba(62,39,35,0.2);
+}
+
+.topbar a{
+  color:white;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:500;
+  opacity:0.9;
+  transition:opacity 0.2s;
+}
+
+.topbar a:hover{ 
+  opacity:1; 
+}
+
+.topbar h2{
+  color:white;
+  font-size:18px;
+}
+
+/* CONTAINER */
+.container{
+  max-width:820px;
+  margin:40px auto;
+  padding:0 20px 60px;
+}
+
+/* EMPTY STATE */
+.empty{
+  text-align:center;
+  padding:80px 20px;
+  color:#a1887f;
+}
+
+.empty .icon{ 
+  font-size:72px; 
+  margin-bottom:16px; 
+}
+
+.empty h2{ 
+  font-size:22px; 
+  margin-bottom:8px; 
+  color:#6d4c41; 
+}
+
+.empty p{ 
+  font-size:14px; 
+  margin-bottom:24px; 
+}
+
+.empty-btn{
+  display:inline-block;
+  padding:12px 28px;
+  background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+  color:white;
+  border-radius:30px;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.empty-btn:hover{ 
+  background:#5d4037; 
+}
+
+/* CART ITEMS */
+.cart-item{
+  background:white;
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  gap:16px;
+  align-items:center;
+  margin-bottom:16px;
+  box-shadow:0 4px 18px rgba(62,39,35,0.1);
+  transition:transform 0.2s;
+}
+
+.cart-item:hover{ 
+  transform:translateY(-2px); 
+}
+
+.cart-item img{
+  width:90px;
+  height:80px;
+  object-fit:cover;
+  border-radius:10px;
+  flex-shrink:0;
+}
+
+.item-info{
+  flex:1;
+}
+
+.item-info h3{
+  font-size:17px;
+  color:#4b2e1e;
+  margin-bottom:4px;
+}
+
+.item-info .type-tag{
+  font-size:12px;
+  background:#f8f3e9;
+  border:1.5px solid #a1887f;
+  border-radius:12px;
+  padding:3px 9px;
+  color:#6d4c41;
+  display:inline-block;
+  margin-bottom:8px;
+}
+
+.item-price{
+  font-size:16px;
+  font-weight:700;
+  color:#5d4037;
+}
+
+/* QTY CONTROLS */
+.qty-row{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+
+.qty-btn{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  border:2px solid #a1887f;
+  background:white;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  color:#5d4037;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.2s;
+  line-height:1;
+}
+
+.qty-btn:hover{
+  background:#8d6e63;
+  color:white;
+  border-color:#8d6e63;
+}
+
+.qty-num{
+  font-size:15px;
+  font-weight:600;
+  min-width:22px;
+  text-align:center;
+}
+
+/* REMOVE */
+.remove-btn{
+  background:none;
+  border:none;
+  cursor:pointer;
+  color:#c62828;
+  font-size:20px;
+  padding:6px;
+  border-radius:8px;
+  transition:background 0.2s;
+  flex-shrink:0;
+}
+
+.remove-btn:hover{ 
+  background:#fde8e8; 
+}
+
+/* SUMMARY BOX */
+.summary{
+  background:white;
+  border-radius:14px;
+  padding:22px;
+  box-shadow:0 4px 18px rgba(62,39,35,0.1);
+  margin-top:28px;
+}
+
+.summary h3{
+  font-size:18px;
+  color:#4b2e1e;
+  margin-bottom:16px;
+  border-bottom:1px solid #f0e6dc;
+  padding-bottom:10px;
+}
+
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-bottom:10px;
+  color:#6d4c41;
+}
+
+.summary-row.total{
+  font-size:19px;
+  font-weight:700;
+  color:#4b2e1e;
+  border-top:2px solid #f0e6dc;
+  padding-top:12px;
+  margin-top:6px;
+}
+
+/* BUTTONS */
+.checkout-btn{
+  width:100%;
+  padding:15px;
+  background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+  color:white;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  font-weight:700;
+  cursor:pointer;
+  margin-top:18px;
+  font-family:'Poppins',sans-serif;
+  transition:0.3s;
+}
+
+.checkout-btn:hover{ 
+  background:#5d4037; 
+  transform:translateY(-2px); 
+}
+
+.clear-btn{
+  width:100%;
+  padding:11px;
+  background:white;
+  color:#c62828;
+  border:2px solid #ef9a9a;
+  border-radius:30px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  margin-top:10px;
+  font-family:'Poppins',sans-serif;
+  transition:0.3s;
+}
+
+.clear-btn:hover{ 
+  background:#fde8e8; 
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <a href="allpets.html">← Continue Shopping</a>
+  <h2>My Cart 🛒</h2>
+  <span style="width:120px"></span>
+</div>
+
+<div class="container">
+
+  <!-- Items render here -->
+  <div id="cartBody"></div>
+
+</div>
+
+<script src="petsdata.js"></script>
+<script src="cart.js"></script>
+
+<script>
+
+function render(){
+
+  const cart = getCart();
+  const body = document.getElementById("cartBody");
+
+  if(cart.length === 0){
+
+    body.innerHTML = `
+      <div class="empty">
+        <div class="icon">🛒</div>
+        <h2>Your cart is empty</h2>
+        <p>Looks like you haven't added any pets yet!</p>
+        <a class="empty-btn" href="allpets.html">Browse Pets</a>
+      </div>
+    `;
+
+    return;
+  }
+
+  // Subtotal
+  const subtotal = cart.reduce((sum, item) => sum + item.price * (item.qty || 1), 0);
+
+  const itemCount = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+
+  let html = "";
+
+  cart.forEach(item => {
+
+    html += `
+      <div class="cart-item" id="item-${item.id}">
+
+        <img src="${item.img}" alt="${item.name}" 
+        onerror="this.src='https://via.placeholder.com/90x80'">
+
+        <div class="item-info">
+
+          <h3>${item.name}</h3>
+
+          <span class="type-tag">${item.type}</span>
+
+          <div class="item-price">
+            ₹${(item.price * (item.qty||1)).toLocaleString()}
+          </div>
+
+          <div class="qty-row">
+
+            <button class="qty-btn" onclick="changeQty(${item.id}, -1)">−</button>
+
+            <span class="qty-num" id="qty-${item.id}">
+              ${item.qty || 1}
+            </span>
+
+            <button class="qty-btn" onclick="changeQty(${item.id}, +1)">+</button>
+
+          </div>
+
+        </div>
+
+        <button class="remove-btn" 
+        onclick="handleRemove(${item.id})" 
+        title="Remove">
+          🗑️
+        </button>
+
+      </div>
+    `;
+  });
+
+  // Summary
+  html += `
+
+    <div class="summary">
+
+      <h3>Order Summary</h3>
+
+      <div class="summary-row">
+        <span>Total Pets (${itemCount})</span>
+        <span>₹${subtotal.toLocaleString()}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Delivery</span>
+        <span style="color:#4caf50;font-weight:600">
+          FREE
+        </span>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>₹${subtotal.toLocaleString()}</span>
+      </div>
+
+      <button class="checkout-btn" onclick="checkout()">
+        Proceed to Checkout ⚡
+      </button>
+
+      <button class="clear-btn" onclick="handleClear()">
+        🗑️ Clear Cart
+      </button>
+
+    </div>
+  `;
+
+  body.innerHTML = html;
+}
+
+function changeQty(petId, delta){
+
+  const cart = getCart();
+
+  const item = cart.find(i => i.id === petId);
+
+  if(!item) return;
+
+  item.qty = (item.qty || 1) + delta;
+
+  if(item.qty < 1) item.qty = 1;
+
+  saveCart(cart);
+
+  updateCartBadge();
+
+  render();
+}
+
+function handleRemove(petId){
+
+  removeFromCart(petId);
+
+  render();
+}
+
+function handleClear(){
+
+  if(confirm("Clear all items from cart?")){
+
+    clearCart();
+
+    render();
+  }
+}
+
+/* CHECKOUT PAGE LINK */
+function checkout(){
+
+  window.location.href = "address page.html";
+
+}
+
+// Initial render
+render();
+
+</script>
+
+</body>
+</html>

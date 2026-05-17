@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise and Playtime | PetCare Blogs</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height: 70px;
+    overflow: visible;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* HERO IMAGE */
+.header-image{
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("images/rabbits.jpg") center/cover;
+    height:50vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.header-image h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.header-image p{
+    font-size:14px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: auto;
+    height: 80px;
+}
+
+/* ARTICLE CONTENT */
+.container{
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.container h2{
+    color:#5d4037; 
+    margin:30px 0 15px;
+}
+
+.container p{
+    margin-bottom:20px;
+    color:#807266;
+}
+
+/* TIP BOX */
+.tip-box{
+    background:#efe6dd;
+    padding:20px;
+    border-left:5px solid #8d6e63;
+    border-radius:5px;
+    margin:20px 0;
+}
+
+/* RELATED POSTS */
+.related{
+    margin-top:50px;
+}
+
+.related h3{
+    margin-bottom:20px;
+     color:#5d4037;
+}
+
+.related-posts{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.related-card{
+    flex:1;
+    min-width:250px;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.related-card:hover{
+    transform:translateY(-8px);
+}
+
+.related-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.related-card p{
+    padding:15px;
+    font-size:14px;
+    color:#4b2e1e;
+}
+
+/* COMMENTS */
+.comments{
+    margin-top:50px;
+}
+
+.comments input, .comments textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:2px solid #d4c7be;
+    border-radius:5px;
+    outline: none;
+}
+
+.comments input:focus,
+.comments textarea:focus{
+    border-color:#8d6e63;
+}
+
+.comments button{
+    padding:10px 18px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    border:none;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.comment{
+    background:white;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(62,39,35,0.15);
+}
+
+.comments button:hover{
+    background:#5d4037;
+}
+
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#5d4037;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .related-posts{
+        flex-direction:column;
+    }
+
+    .header-image h1{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <img src="images/logo3.png" alt="logo">
+    </div>
+    <a href="smallpetcare.html">← Back to Blogs</a>
+</nav>
+
+<!-- HERO IMAGE -->
+<section class="header-image">
+    <div>
+        <h1>Exercise and Playtime</h1>
+        <p>Published February 2026 | 5 min read</p>
+    </div>
+</section>
+
+<!-- ARTICLE CONTENT -->
+<div class="container">
+
+    <p>Small pets may be tiny, but they have lots of energy and curiosity packed inside them. Just like us, they need regular exercise and playtime to stay healthy, active, and happy. Giving your pet time to move around, explore, and play not only keeps their body fit but also keeps their mind engaged.</p>
+
+    <h2>1. Why Exercise is Important</h2>
+    <ul>
+        <li>Keeps their body strong and prevents obesity</li>
+        <li>Improves digestion and overall health</li>
+        <li>Reduces boredom and stress</li>
+        <li>Prevents unwanted behaviors like chewing or aggression</li>
+    </ul>
+
+    <h2>2. Playtime for Rabbits</h2>
+    <p>Rabbits love to hop, run, and explore their surroundings.</p>
+    <ul>
+        <li>Let them out of their cage in a safe, enclosed area</li>
+        <li>Provide tunnels, cardboard boxes, or soft toys</li>
+        <li>Give them space to jump and stretch</li>
+    </ul>
+
+    <h2>3. Hamsters and Guinea Pigs</h2>
+    <p>These little pets are naturally active, especially at night.</p>
+    <ul>
+        <li>Hamster:</li>
+        <p>A running wheel is a must! They also enjoy tunnels and small toys to explore.</p>
+
+        <li>Guineapig:</li>
+        <p>They love floor time outside their cage and enjoy hiding spots and gentle play.</p>
+    </ul>
+
+    <h2>4. Birds</h2>
+    <p>Birds are playful and intelligent, and they need both physical and mental activity.</p>
+    <ul>
+        <li>Let them fly in a safe, closed room (if possible)</li>
+        <li>Provide swings, ladders, and hanging toys</li>
+        <li>Rotate toys to keep things interesting</li>
+    </ul>
+
+    <h2>5. Fish</h2>
+    <p>Fish may not “play” like other pets, but they still need stimulation.</p>
+    <ul>
+        <li>Decorate the tank with plants, rocks, and hiding spots</li>
+        <li>Ensure enough space for swimming</li>
+        <li>Add gentle water movement for active species</li>
+    </ul>
+
+    <h2> 6. Safety During Playtime</h2>
+    <p>While playtime is fun, safety should always come first.</p>
+    <ul>
+        <li>Never leave your pet unattended outside its enclosure</li>
+        <li>Remove harmful objects or wires from the area</li>
+        <li>Avoid rough handling</li>
+        <li>Keep other pets away during playtime</li>
+    </ul>
+
+    <div class="tip-box">
+        <h3>❤️ Simple Tips for Happy Playtime</h3>
+            <ul>
+                <li>Spend time with your pet every day</li>
+                <li>Keep a routine for exercise and play</li>
+                <li>Give them enough space to move freely</li>
+                <li>Watch their behavior—they’ll tell you what they enjoy</li>
+            </ul>
+    </div>
+
+    <!-- RELATED POSTS -->
+    <div class="related">
+        <h3>Related Posts</h3>
+        <div class="related-posts">
+            <div class="related-card">
+                <a href="feedingsmallpet.html" class="related-card">
+                <img src="images/smallpetfood.jpg">
+                <p>Feeding Your Small Pets</p>
+                </a>
+            </div>
+
+            <div class="related-card">
+                <a href="pethygiene.html" class="related-card">
+                <img src="images/smallpetgroom2.jpg">
+                <p>Pet Hygiene Essentials</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments">
+        <h3>Leave a Comment</h3>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="message" rows="4" placeholder="Write your comment..."></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <div id="commentSection"></div>
+    </div>
+
+</div>
+
+<footer>
+© PetSphere Blogs | All rights reserved
+</footer>
+
+<script>
+function addComment(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || message === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let comment = document.createElement("div");
+    comment.classList.add("comment");
+    comment.innerHTML = "<strong>" + name + ":</strong><p>" + message + "</p>";
+
+    document.getElementById("commentSection").appendChild(comment);
+
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>

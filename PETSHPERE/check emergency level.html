@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PetSphere | Emergency Support</title>
+
+    <style>
+        *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* HEADER */
+header{
+    padding:22px 8%;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    box-shadow:0 5px 18px rgba(62,39,35,0.15);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:2rem;
+    font-weight:700;
+    color:#ffffff;
+}
+
+.logo span{
+    color:#f8f3e9;
+    font-weight:400;
+}
+
+/* ALERT */
+.alert-banner{
+    background:#a94442;
+    color:#fff;
+    text-align:center;
+    padding:16px;
+    font-weight:600;
+    font-size:16px;
+}
+
+/* SECTION COMMON */
+section{
+    padding:70px 8%;
+}
+
+section h2{
+    text-align:center;
+    font-size:2.4rem;
+    color:#5d4037;
+    margin-bottom:35px;
+}
+
+/* QUICK ACTIONS */
+.actions-container{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    flex-wrap:wrap;
+}
+
+.action-btn{
+    padding:18px 28px;
+    min-width:260px;
+    border:none;
+    border-radius:15px;
+    color:white;
+    font-size:18px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+    box-shadow:0 10px 22px rgba(62,39,35,0.15);
+}
+
+.action-btn:hover{
+    transform:translateY(-5px);
+}
+
+/* BUTTON COLORS */
+.red{
+    background:#c0392b;
+}
+.red:hover{
+    background:#a93226;
+}
+
+.orange{
+    background:#d68910;
+}
+.orange:hover{
+    background:#b9770e;
+}
+
+.gold{
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+.gold:hover{
+    background:#5d4037;
+}
+
+/* CHECKER */
+.symptom-checker{
+    background:#fffaf4;
+}
+
+.checker-box{
+    max-width:560px;
+    margin:auto;
+    background:#ffffff;
+    padding:35px;
+    border-radius:22px;
+    box-shadow:0 15px 35px rgba(62,39,35,0.12);
+}
+
+.checker-box label{
+    display:block;
+    text-align:left;
+    padding:10px 0;
+    color:#5d4037;
+    font-size:16px;
+}
+
+.checker-box input{
+    margin-right:10px;
+    transform:scale(1.1);
+}
+
+.check-btn{
+    width:100%;
+    margin-top:22px;
+    padding:14px;
+    border:none;
+    border-radius:12px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.check-btn:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+#result{
+    margin-top:18px;
+    font-size:18px;
+    font-weight:700;
+}
+
+/* RESULT COLORS */
+.low{color:green;}
+.medium{color:#d68910;}
+.high{color:#c0392b;}
+.critical{
+    color:#8b0000;
+    font-size:20px;
+}
+
+/* GUIDES */
+.guide-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:25px;
+}
+
+.guide-card{
+    background:#ffffff;
+    padding:28px 22px;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(62,39,35,0.10);
+    transition:0.3s ease;
+}
+
+.guide-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(62,39,35,0.16);
+}
+
+.guide-card h3{
+    color:#5d4037;
+    margin-bottom:12px;
+    font-size:20px;
+}
+
+.guide-card p{
+    color:#6c584c;
+    font-size:15px;
+}
+
+/* HOTLINE */
+.hotline-widget{
+    width:90%;
+    max-width:900px;
+    margin:20px auto 50px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:white;
+    text-align:center;
+    padding:28px;
+    border-radius:18px;
+    font-size:20px;
+    box-shadow:0 12px 30px rgba(62,39,35,0.18);
+}
+
+/* FOOTER */
+footer{
+    background:#5d4037;
+    color:white;
+    text-align:center;
+    padding:22px;
+    margin-top:40px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+header{
+    padding:18px 5%;
+}
+
+.logo{
+    font-size:1.6rem;
+}
+
+section{
+    padding:50px 5%;
+}
+
+section h2{
+    font-size:2rem;
+}
+
+.action-btn{
+    width:100%;
+}
+
+.checker-box{
+    padding:25px;
+}
+
+.hotline-widget{
+    font-size:17px;
+    padding:20px;
+}
+
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo"><span>Emergency</span></div>
+</header>
+
+<div class="alert-banner">
+    If your pet has severe bleeding, breathing issues, or seizures — get help immediately.
+</div>
+
+<section class="quick-actions">
+    <h2>Emergency Quick Actions</h2>
+
+    <div class="actions-container">
+
+        <button class="action-btn red">
+             Call Emergency Vet
+        </button>
+
+        <button class="action-btn orange" onclick="location.href='ambulance.html'">
+             Request Ambulance
+        </button>
+
+        <button class="action-btn gold">
+             24/7 Emergency Hotline
+        </button>
+
+    </div>
+</section>
+
+<!-- SYMPTOM CHECKER -->
+<section class="symptom-checker">
+    <h2>Symptom Checker</h2>
+
+    <div class="checker-box">
+        <label><input type="checkbox" class="symptom" data-score="4"> Breathing Difficulty</label>
+        <label><input type="checkbox" class="symptom" data-score="5"> Heavy Bleeding</label>
+        <label><input type="checkbox" class="symptom" data-score="5"> Seizures</label>
+        <label><input type="checkbox" class="symptom" data-score="3"> Vomiting Blood</label>
+        <label><input type="checkbox" class="symptom" data-score="2"> Broken Bone</label>
+        <label><input type="checkbox" class="symptom" data-score="4"> Ingestion of Poison</label>
+
+        <button class="check-btn" onclick="checkEmergency()">Check Emergency Level</button>
+
+        <p id="result" class="result-text">Select symptoms to analyze severity.</p>
+    </div>
+</section>
+
+<!-- FIRST AID GUIDES -->
+<section class="guides">
+    <h2>Emergency First Aid Guides</h2>
+
+    <div class="guide-container">
+
+        <div class="guide-card">
+            <h3>Stop Bleeding</h3>
+            <p>Apply firm pressure with a clean cloth and seek immediate vet care.</p>
+        </div>
+
+        <div class="guide-card">
+            <h3>Help a Choking Pet</h3>
+            <p>Remove visible objects and perform chest thrusts gently.</p>
+        </div>
+
+        <div class="guide-card">
+            <h3> Seizure Response</h3>
+            <p>Clear area around your pet, do not restrain, monitor duration.</p>
+        </div>
+
+        <div class="guide-card">
+            <h3> CPR Guide</h3>
+            <p>Alternate rescue breaths with chest compressions (100–120/min).</p>
+        </div>
+    </div>
+</section>
+
+<div class="hotline-widget">
+    Emergency Hotline: <strong>1800-PET-HELP</strong><br>
+    Available 24/7 for life-threatening cases.
+</div>
+
+<footer>
+    © PetSphere Emergency Support | All Rights Reserved
+</footer>
+
+<!-- EMERGENCY LEVEL SCRIPT -->
+<script>
+function checkEmergency() {
+    let symptoms = document.querySelectorAll(".symptom:checked");
+    let totalScore = 0;
+
+    symptoms.forEach(s => {
+        totalScore += parseInt(s.getAttribute("data-score"));
+    });
+
+    let result = document.getElementById("result");
+
+    if (totalScore === 0) {
+        result.textContent = "No symptoms selected. Please choose symptoms.";
+        result.className = "";
+        return;
+    }
+
+    let level = "";
+    let message = "";
+
+    if (totalScore <= 3) {
+        level = "low";
+        message = "Low Emergency — Monitor your pet.";
+    } 
+    else if (totalScore <= 7) {
+        level = "medium";
+        message = "Medium Emergency — Contact a vet soon.";
+    } 
+    else if (totalScore <= 12) {
+        level = "high";
+        message = "High Emergency — Seek help immediately!";
+    } 
+    else {
+        level = "critical";
+        message = "CRITICAL — Get emergency help NOW or request an ambulance!";
+        alert("⚠ CRITICAL EMERGENCY DETECTED!\nImmediate action required.\nClick OK to request an ambulance.");
+    }
+
+    result.textContent = message;
+    result.className = level;
+}
+</script>
+
+</body>
+</html>

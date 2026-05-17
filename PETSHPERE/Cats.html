@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cat Category</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#8d6e63;
+  --secondary:#a1887f;
+  --dark:#5d4037;
+  --text:#4b2e1e;
+  --bg:#f8f3e9;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+}
+
+/* HEADER */
+header{
+  background: linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+  color:white;
+  padding:30px 20px;
+  text-align:center;
+  box-shadow:0 4px 15px rgba(62,39,35,0.2);
+  position:relative;
+}
+
+/* CART ICON WRAP */
+.cart-icon-wrap{
+  position:absolute;
+  top:50%;
+  right:25px;
+  transform:translateY(-50%);
+  display:block;
+  text-decoration:none; /* ✅ removes underline */
+}
+
+/* CART ICON */
+.cart-icon{
+  width:46px;
+  height:46px;
+  background:rgba(255,255,255,0.2);
+  border:2px solid rgba(255,255,255,0.5);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  position:relative;
+}
+
+/* BADGE FIX */
+#cartBadge{
+  position:absolute;
+  top:-6px;
+  right:-6px;
+  background:#e53935;
+  color:#fff;
+  font-size:11px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+
+  /* ✅ FIX DARK LINE ISSUE */
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:20px;
+  border:none;
+  display:none;
+}
+
+/* CONTENT */
+.container{
+  padding:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.controls{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-bottom:25px;
+  justify-content:center;
+}
+
+input,select{
+  padding:12px 15px;
+  border-radius:25px;
+  border:2px solid #d4c7be;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:white;
+  border-radius:15px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(62,39,35,0.25);
+}
+
+.card img{
+  width:100%;
+  height:180px;
+  object-fit:cover;
+}
+
+.card-content{
+  padding:15px;
+}
+
+.tag{
+  padding:5px 10px;
+  border-radius:15px;
+  background:var(--bg);
+  border:2px solid var(--secondary);
+  font-size:12px;
+  margin-right:5px;
+}
+
+.price{
+  font-weight:600;
+  margin:10px 0;
+}
+
+/* BUTTONS */
+.btn-stack{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.btn-row{
+  display:flex;
+  gap:8px;
+}
+
+.btn{
+  flex:1;
+  padding:10px;
+  border:none;
+  border-radius:20px;
+  background:linear-gradient(135deg,#8d6e63,#a1887f);
+  color:white;
+  cursor:pointer;
+}
+
+.btn:hover{
+  background:#5d4037;
+}
+
+.btn-cart{
+  width:100%;
+  padding:10px;
+  border-radius:20px;
+  border:2px solid #8d6e63;
+  background:white;
+  color:#5d4037;
+  cursor:pointer;
+}
+
+.btn-cart.added{
+  background:#e8f5e9;
+  color:#2e7d32;
+  border-color:#2e7d32;
+}
+
+footer{
+  text-align:center;
+  padding:20px;
+  background:#5d4037;
+  color:white;
+  margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Cat Category</h1>
+  <p>Find your perfect feline friend</p>
+
+  <a class="cart-icon-wrap" href="cart.html">
+    <div class="cart-icon">
+      🛒
+      <span id="cartBadge"></span>
+    </div>
+  </a>
+</header>
+
+<div class="container">
+
+  <div class="controls">
+    <input type="text" id="searchBox" placeholder="🔍 Search cat...">
+
+    <select id="ageFilter">
+      <option value="all">All Ages</option>
+      <option value="Adult">Adult</option>
+      <option value="Kitten">Kitten</option>
+    </select>
+
+    <select id="genderFilter">
+      <option value="all">All Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+    </select>
+  </div>
+
+  <div class="grid" id="catContainer"></div>
+
+</div>
+
+<footer>
+  <p>© PetSphere | All rights reserved.</p>
+</footer>
+
+<script src="petsdata.js"></script>
+<script src="cart.js"></script>
+
+<script>
+const container = document.getElementById("catContainer");
+
+function display(){
+  let search = document.getElementById("searchBox").value.toLowerCase();
+  let age = document.getElementById("ageFilter").value;
+  let gender = document.getElementById("genderFilter").value;
+
+  let cats = allPets.filter(p =>
+    p.category === "cat" &&
+    p.name.toLowerCase().includes(search) &&
+    (age === "all" || p.age === age) &&
+    (gender === "all" || p.gender === gender)
+  );
+
+  container.innerHTML = "";
+
+  cats.forEach(c => {
+    container.innerHTML += `
+      <div class="card">
+        <img src="${c.img}">
+        <div class="card-content">
+          <h3>${c.name}</h3>
+
+          <span class="tag">${c.age}</span>
+          <span class="tag">${c.gender}</span>
+
+          <p class="price">₹${c.price.toLocaleString()}</p>
+
+          <div class="btn-stack">
+            <div class="btn-row">
+              <button class="btn" onclick="location.href='details.html?id=${c.id}'">View Details</button>
+              <button class="btn" onclick="location.href='address page.html?id=${c.id}'">Buy Now</button>
+            </div>
+            <button class="btn-cart" onclick="handleAddToCart(${c.id}, this)">+ Add to Cart</button>
+          </div>
+
+        </div>
+      </div>
+    `;
+  });
+}
+
+function handleAddToCart(id, btn){
+  const pet = allPets.find(p => p.id === id);
+  addToCart(pet);
+
+  btn.textContent = "✓ Added!";
+  btn.classList.add("added");
+
+  setTimeout(()=>{
+    btn.textContent = "+ Add to Cart";
+    btn.classList.remove("added");
+  },2000);
+}
+
+document.getElementById("searchBox").addEventListener("input", display);
+document.getElementById("ageFilter").addEventListener("change", display);
+document.getElementById("genderFilter").addEventListener("change", display);
+
+display();
+</script>
+
+</body>
+</html>

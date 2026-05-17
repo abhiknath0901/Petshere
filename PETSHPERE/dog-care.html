@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dog Care Blogs</title>
+
+<style>
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color: #4b2e1e;
+}
+
+/* ===== HERO SECTION ===== */
+.hero{
+    background: url("images/dogcare1.jpg") no-repeat;
+    background-size: cover;
+    background-position: center 52%;
+    height:300px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-align:center;
+    position:relative;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(93,64,55,0.6);
+}
+
+.hero-content{
+    position:relative;
+    z-index:1;
+}
+
+.hero h1{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+/* ===== SEARCH BAR ===== */
+.search-section{
+    padding:30px;
+    text-align:center;
+}
+
+.search-section input{
+    width:60%;
+    padding:12px;
+    border-radius:25px;
+    border:2px solid #d4c7be;
+    font-size:16px;
+    outline:none;
+    background: #ffffff;
+}
+
+.search-section input:focus{
+    border-color:#8d6e63;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.filter-buttons{
+    margin-top:15px;
+}
+
+.filter-btn{
+    padding:8px 15px;
+    border:2px solid #a1887f;
+    margin:5px;
+    border-radius:20px;
+    cursor:pointer;
+    background:#f8f3e9;
+    color: #4b2e1e;
+    transition:0.3s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+}
+
+/* ===== BLOG GRID ===== */
+.blog-container{
+    width:90%;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding-bottom:40px;
+}
+
+/* ===== BLOG CARD ===== */
+.blog-card{
+    background:#ffffff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(62,39,35,0.25);
+    transition:0.3s;
+    border:2px solid #d4c7be;
+}
+
+.blog-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 40px rgba(94,65,55,0.3);
+}
+
+.blog-card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+}
+
+.blog-content{
+    padding:15px;
+}
+
+.blog-content h3{
+    margin-bottom:10px;
+    color: #5d4037;
+}
+
+.blog-content p{
+    font-size:14px;
+    color:#6c584c;
+    margin-bottom:10px;
+}
+
+.blog-meta{
+    font-size:12px;
+    color:#8d6e63;
+    margin-bottom:10px;
+}
+
+.read-more{
+    display:inline-block;
+    padding:8px 15px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    border-radius:20px;
+    text-decoration:none;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.read-more:hover{
+    background:#5d4037;
+}
+
+/* ===== FOOTER ===== */
+footer{
+    background: linear-gradient(135deg, #8d6e63 0%, #5d4037 100%);
+    color: white;
+    text-align: center;
+    padding: 15px 10px;
+    font-size: 14px;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+}
+
+footer p{
+    margin: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Dog Care Blogs</h1>
+        <p>Everything you need to know to care for your furry friend</p>
+    </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+    <input type="text" id="searchInput" placeholder="Search dog blogs...">
+    
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="training">Training</button>
+        <button class="filter-btn" data-category="health">Health</button>
+        <button class="filter-btn" data-category="food">Food</button>
+        <button class="filter-btn" data-category="grooming">Grooming</button>
+    </div>
+</div>
+
+<!-- BLOG CARDS -->
+<div class="blog-container" id="blogContainer">
+
+    <!-- BLOG CARD TEMPLATE -->
+    <div class="blog-card" data-category="training">
+        <img src="images/dogtraining.jpg">
+        <div class="blog-content">
+            <div class="blog-meta">March 10, 2025 | Training</div>
+            <h3>How to Train a Puppy</h3>
+            <p>Learn basic commands and positive reinforcement techniques to train your puppy effectively.</p>
+            <a href="trainingdog.html" class="read-more">Read More</a>
+        </div>
+    </div>
+
+    <div class="blog-card" data-category="health">
+        <img src="images/dogmedical.jpg">
+        <div class="blog-content">
+            <div class="blog-meta">March 12, 2025 | Health</div>
+            <h3>Vaccination Schedule for Dogs</h3>
+            <p>Understand the essential vaccines your dog needs at different stages of life.</p>
+            <a href="dogvaccine.html" class="read-more">Read More</a>
+        </div>
+    </div>
+
+    <div class="blog-card" data-category="food">
+        <img src="images/dogfood.jpg">
+        <div class="blog-content">
+            <div class="blog-meta">March 15, 2025 | Food</div>
+            <h3>Best Food for Growing Puppies</h3>
+            <p>Discover the most nutritious food options for your growing puppy.</p>
+            <a href="dogfood.html" class="read-more">Read More</a>
+        </div>
+    </div>
+
+    <div class="blog-card" data-category="grooming">
+        <img src="images/doggroom.jpg">
+        <div class="blog-content">
+            <div class="blog-meta">March 18, 2025 | Grooming</div>
+            <h3>Essential Grooming Tips</h3>
+            <p>Keep your dog's coat shiny and healthy with these grooming tips.</p>
+            <a href="doggrooming.html" class="read-more">Read More</a>
+        </div>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>© PetSphere Blogs | All Rights Reserved </p>
+</footer>
+
+<script>
+// SEARCH + FILTER SYSTEM
+
+const searchInput = document.getElementById("searchInput");
+const blogCards = document.querySelectorAll(".blog-card");
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+searchInput.addEventListener("keyup", function() {
+    const searchValue = searchInput.value.toLowerCase();
+    blogCards.forEach(card => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        card.style.display = title.includes(searchValue) ? "block" : "none";
+    });
+});
+
+filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+        document.querySelector(".filter-btn.active").classList.remove("active");
+        button.classList.add("active");
+
+        const category = button.getAttribute("data-category");
+
+        blogCards.forEach(card => {
+            if(category === "all" || card.getAttribute("data-category") === category){
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    });
+});
+</script>
+
+</body>
+</html>

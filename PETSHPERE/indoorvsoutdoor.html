@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indoor vs Outdoor Cats</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color: #4b2e1e;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding: 0px 60px;
+    height: 70px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* HEADER */
+.header{
+    background:linear-gradient(rgba(93,64,55,0.7), rgba(93,64,55,0.7)),
+    url("images/cat2.jpg") center/cover;
+    background-size: cover;
+    background-position: center 65%;
+    position:relative;
+    height:55vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.header h1{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo img{
+    width: auto;
+    height: 110%;
+    object-fit: contain;
+}
+
+/* MAIN CONTAINER */
+.container{
+    max-width:1100px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+/* INTRO */
+.intro{
+    margin-bottom:40px;
+    font-size:16px;
+    color:#6c584c;
+}
+
+/* COMPARISON SECTION */
+.comparison{
+    display:flex;
+    gap:30px;
+    margin-bottom:40px;
+}
+
+.box{
+    flex:1;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 10px 25px rgba(62,39,35,0.15);
+}
+
+.box h2{
+    margin-bottom:15px;
+}
+
+.indoor{
+    border-top:5px solid #8d6e63;
+}
+
+.outdoor{
+    border-top:5px solid #5d4037;
+}
+
+.box ul{
+    list-style:none;
+}
+
+.box ul li{
+    margin-bottom:10px;
+}
+
+/* SAFETY TIPS */
+.tips{
+    background:#ffffff;
+    padding:20px;
+    border-left:6px solid #a1887f;
+    box-shadow:0 10px 25px rgba(62,39,35,0.1);
+    border-radius:8px;
+    margin-bottom:40px;
+}
+
+/* COMMENTS (FIXED) */
+.comments{
+    margin-top:50px;
+}
+
+.comments input, .comments textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:2px solid #d4c7be;
+    border-radius:5px;
+}
+
+.comments button{
+    padding:8px 15px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.comments button:hover{
+    background:#5d4037;
+}
+
+.comment{
+    background:white;
+    padding:10px;
+    margin-top:10px;
+    border-radius:5px;
+    box-shadow:0 5px 15px rgba(62,39,35,0.1);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#5d4037;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    .comparison{
+        flex-direction:column;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2 class="logo">
+        <img src="images/logo3.png" alt="PetSphere Logo">
+    </h2>
+
+    <a href="catcare.html">← Back to Blogs</a>
+</nav>
+
+<div class="header">
+    <div>
+        <h1>Indoor vs Outdoor Cats</h1>
+        <p>Published February 2026 | 5 min read</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="intro">
+        Deciding whether your cat should live indoors or outdoors is an important choice that every cat owner faces. Both lifestyles come with their own benefits and challenges...
+    </div>
+
+    <div class="comparison">
+
+        <div class="box indoor">
+            <h2>🏠 Indoor Cats</h2>
+            <ul>
+                <li>✔ Safer from traffic accidents, predators, and other outdoor dangers</li>
+                <li>✔ Lower risk of infections, parasites, and diseases</li>
+                <li>✔ Longer average lifespan</li>
+                <li>✖ May become bored without stimulation</li>
+                <li>✖ Needs toys & playtime</li>
+            </ul>
+            <p>Indoor cats live safely but need engagement to stay happy.</p>
+        </div>
+
+        <div class="box outdoor">
+            <h2>🌳 Outdoor Cats</h2>
+            <ul>
+                <li>✔ Natural exercise & hunting instinct</li>
+                <li>✔ More freedom</li>
+                <li>✖ Risk of accidents & fights</li>
+                <li>✖ Higher exposure to diseases</li>
+                <li>✖ Risk of getting lost</li>
+            </ul>
+            <p>Outdoor cats enjoy freedom but face more risks.</p>
+        </div>
+
+    </div>
+
+    <div class="tips">
+        💡 <strong>Safety Tip:</strong> Keep cats indoors or allow supervised outdoor time.
+    </div>
+
+    <!-- COMMENTS (NOW INSIDE CONTAINER) -->
+    <div class="comments">
+        <h2>Share Your Opinion</h2>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="message" rows="4" placeholder="Do you prefer indoor or outdoor cats?"></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <div id="commentSection"></div>
+    </div>
+
+</div>
+
+<footer>
+© PetSphere | All rights reserved
+</footer>
+
+<script>
+function addComment(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || message === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let comment = document.createElement("div");
+    comment.classList.add("comment");
+    comment.innerHTML = "<strong>" + name + ":</strong><p>" + message + "</p>";
+
+    document.getElementById("commentSection").appendChild(comment);
+
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>

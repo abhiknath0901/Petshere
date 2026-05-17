@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSphere</title>
+    <link rel="stylesheet" href="draft4.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+
+        <!-- Logo Section -->
+        <div class="logo" onclick="showHome()">
+            <img src="images/logo3.png" alt="Pet Sphere Logo" class="logo-img">
+            <span class="logo-text">PetSphere</span>
+        </div>
+
+        <!-- Navigation Links -->
+        <ul class="nav-links" id="navLinks">
+
+            <li><a onclick="showHome()">Home</a></li>
+
+            <li class="dropdown">
+                <a onclick="showServices()">Services <span class="arrow">&#9662;</span></a>
+            </li>
+
+            <li class="dropdown">
+                <a onclick="scrollToPets()">Browse Pets <span class="arrow">&#9662;</span></a>
+            </li>
+
+            <!-- Blog Dropdown -->
+            <li class="dropdown">
+                <a href="#">Blogs <span class="arrow">&#9662;</span></a>
+
+                <ul class="dropdown-menu">
+                    <li><a href="dog-care.html">Dog Care</a></li>
+                    <li><a href="catcare.html">Cat Care</a></li>
+                    <li><a href="smallpetcare.html">Small Pet Care</a></li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- Login & Signup Buttons -->
+        <div id="navAuth">
+            <button class="nav-btn" onclick="showLogin()">Login</button>
+            <button class="nav-btn" onclick="showSignup()">Signup</button>
+        </div>
+
+    </nav>
+</header>
+
+<!-- Home Page -->
+<div id="homePage" class="page active">
+
+    <section class="hero">
+
+        <video autoplay muted loop playsinline class="background-video">
+            <source src="video/CST video - Made with Clipchamp.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h1>One Step Pet Wonderland</h1>
+            <p>Give a loving home to a pet in need</p>
+
+            <button class="cta-button" onclick="scrollToPets()">
+                Start Browsing
+            </button>
+        </div>
+
+    </section>
+
+    <!-- ================= PET BROWSING SECTION ================= -->
+
+    <div class="container" id="browsePets">
+
+        <h2 class="section-title">Available Pets</h2>
+
+        <p class="section-subtitle">
+            Meet our adorable friends looking for forever homes
+        </p>
+
+        <div class="filter-buttons">
+
+            <a href="allpets.html">
+                <button class="filter-btn active" data-filter="all">
+                    All Pets
+                </button>
+            </a>
+
+            <a href="Dogs.html">
+                <button class="filter-btn" data-filter="dog">
+                    Dogs
+                </button>
+            </a>
+
+            <a href="Cats.html">
+                <button class="filter-btn" data-filter="cat">
+                    Cats
+                </button>
+            </a>
+
+            <a href="Smallpet.html">
+                <button class="filter-btn" data-filter="smallpet">
+                    Small Pets
+                </button>
+            </a>
+
+        </div>
+
+        <!-- ================= SERVICES SECTION ================= -->
+
+        <div class="services-section">
+
+            <section class="services">
+
+                <h2>Our Services</h2>
+
+                <div class="services-grid">
+
+                    <a href="allpets.html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/selling.jpg);">
+
+                            <h3>Pet Selling</h3>
+
+                            <p>
+                                Find your perfect companion from our curated
+                                selection of healthy, vaccinated pets.
+                            </p>
+
+                        </div>
+                    </a>
+
+                    <a href="Home page for doc.html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/medical2.jpg);">
+
+                            <h3>Medical Care</h3>
+
+                            <p>
+                                Professional variety services including check-ups,
+                                vaccinations, and emergency care.
+                            </p>
+
+                        </div>
+                    </a>
+
+                    <a href="adoption(2).html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/adoption2.jpg);">
+
+                            <h3>Adoption</h3>
+
+                            <p>
+                                Give a loving home to pets in need.
+                                Browse our adoption listings and change a life.
+                            </p>
+
+                        </div>
+                    </a>
+
+                    <a href="support(1).html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/support4.jpg);">
+
+                            <h3>Support</h3>
+
+                            <p>
+                                24/7 pet care advice, training tips,
+                                and community support for pet owners.
+                            </p>
+
+                        </div>
+                    </a>
+
+                    <a href="Rescue.html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/rescue3.jpg);">
+
+                            <h3>Rescue</h3>
+
+                            <p>
+                                Join our rescue efforts to save and rehabilitate
+                                abandoned and stray animals.
+                            </p>
+
+                        </div>
+                    </a>
+
+                    <a href="grooming homepage.html" class="service-link">
+                        <div class="service-box"
+                             style="background-image: url(images/Grooming.jpg);">
+
+                            <h3>Grooming</h3>
+
+                            <p>
+                                Expert grooming that keeps your pet clean and healthy,
+                                helping them look and feel their best.
+                            </p>
+
+                        </div>
+                    </a>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <div class="pets-grid" id="homePetsGrid"></div>
+
+    </div>
+
+    <!-- ================= WHY PETSPHERE SECTION ================= -->
+
+    <section class="features-section">
+
+        <h2 class="title">Why PetSphere?</h2>
+
+        <p class="subtitle">
+            Looking for a furry companion?
+            Know why PetSphere is the perfect option for you.
+        </p>
+
+        <div class="timeline">
+
+            <div class="feature-card left">
+
+                <div class="icon"></div>
+
+                <h3>All Kinds of Pets Under One Roof</h3>
+
+                <p>
+                    Find dogs, cats, birds, fishes, rabbits, hamsters,
+                    and many more pets all in one place.
+                </p>
+
+                <a href="sellers.html">View More</a>
+
+            </div>
+
+            <div class="feature-card right">
+
+                <div class="icon"></div>
+
+                <h3>Vaccinated & Verified Pet</h3>
+
+                <p>
+                    Every pet listed is health-checked, vaccinated,
+                    and verified for your peace of mind.
+                </p>
+
+                <a href="vaccinated.html">View More</a>
+
+            </div>
+
+            <div class="feature-card left">
+
+                <div class="icon"></div>
+
+                <h3>Pet Rescue and Emergency Support</h3>
+
+                <p>
+                    Get help during emergencies with quick rescue
+                    and support services for pets.
+                </p>
+
+                <a href="rescue1.html">View More</a>
+
+            </div>
+
+            <div class="feature-card right">
+
+                <div class="icon"></div>
+
+                <h3>Grooming and Pet Care Services</h3>
+
+                <p>
+                    From grooming to daily care,
+                    we provide complete services to keep your pets healthy.
+                </p>
+
+                <a href="grooming.html">View More</a>
+
+            </div>
+
+            <div class="feature-card left">
+
+                <div class="icon"></div>
+
+                <h3>Happy Pet Parenting Support</h3>
+
+                <p>
+                    Guidance, tips, and support to help you become
+                    the best pet parent.
+                </p>
+
+                <a href="support.html">View More</a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="footer">
+
+        <div class="footer-container">
+
+            <div class="footer-about">
+
+                <h2>PetSphere</h2>
+
+                <p>
+                    Your trusted platform to adopt, rescue,
+                    and care for pets with love and responsibility.
+                </p>
+
+                <div class="contact-info">
+                    <p>📞 +91 98765 43210</p>
+                    <p>📧 support@petsphere.com</p>
+                    <p>📍 Bhubaneswar, India</p>
+                </div>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Our Company</h3>
+
+                <a href="About us.html">About us</a>
+                <a href="Contact us.html">Contact us</a>
+                <a href="Terms&Condition.html">Terms and Conditions</a>
+                <a href="PrivacyPolicy.html">Privacy policy</a>
+
+            </div>
+
+            <div class="footer-links">
+
+                <h3>Our Services</h3>
+
+                <a href="allpets.html">Pet Selling</a>
+                <a href="Home page for doc.html">Medical Care</a>
+                <a href="adoption(2).html">Adoption</a>
+                <a href="grooming homepage.html">Grooming</a>
+                <a href="Rescue.html">Rescue</a>
+
+            </div>
+
+            <div class="newsletter">
+
+                <h3>Newsletter</h3>
+
+                <p>Subscribe to get the latest updates</p>
+
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Enter Email ID">
+                    <button type="button">Go</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; PetSphere | All rights reserved</p>
+        </div>
+
+    </footer>
+
+</div>
+
+<!-- Login Page -->
+
+<div id="loginPage" class="page">
+
+    <div class="auth-container">
+
+        <div class="auth-box login-box">
+
+            <!-- Video background -->
+
+            <video class="login-video" autoplay muted loop playsinline>
+                <source src="video/bgvideo1.mp4" type="video/mp4">
+            </video>
+
+            <!-- Login content -->
+
+            <div class="login-content">
+
+                <h1 class="auth-title">Welcome Back!</h1>
+
+                <p class="auth-subtitle">
+                    Login to continue
+                </p>
+
+                <form id="loginForm">
+
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" required>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        Login
+                    </button>
+
+                </form>
+
+                <p class="auth-switch">
+                    Don't have an account?
+                    <span class="auth-link" onclick="showSignup()">
+                        Sign up here
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Signup Page -->
+
+<div id="signupPage" class="page">
+
+    <div class="auth-container">
+
+        <div class="auth-box">
+
+            <h1 class="auth-title">Join Us!</h1>
+
+            <p class="auth-subtitle">
+                Create your account
+            </p>
+
+            <form id="signupForm">
+
+                <div class="form-group">
+                    <label for="signupName">Full Name</label>
+                    <input type="text" id="signupName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupEmail">Email</label>
+                    <input type="email" id="signupEmail" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPassword">Password</label>
+                    <input type="password"
+                           id="signupPassword"
+                           required
+                           minlength="6">
+                </div>
+
+                <div class="form-group">
+                    <label for="signupPhone">Phone Number</label>
+                    <input type="tel" id="signupPhone" required>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Create Account
+                </button>
+
+            </form>
+
+            <p class="auth-switch">
+                Already have an account?
+
+                <span class="auth-link" onclick="showLogin()">
+                    Login here
+                </span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="newscript.js"></script>
+
+</body>
+</html>

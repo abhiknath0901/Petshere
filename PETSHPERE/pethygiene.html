@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Hygiene Essentials | PetCare Blogs</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* NAVBAR */
+nav{
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);
+    color:white;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height: 70px;
+    overflow: visible;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+}
+
+/* HERO IMAGE */
+.header-image{
+    background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    url("images/birds.jpg") center/cover;
+    background-position: center 60%;
+    height:50vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.header-image h1{
+    font-size:36px;
+    margin-bottom:10px;
+}
+
+.header-image p{
+    font-size:14px;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img{
+    width: auto;
+    height: 80px;
+}
+
+/* ARTICLE CONTENT */
+.container{
+    max-width:900px;
+    margin:50px auto;
+    padding:0 20px;
+}
+
+.container h2{
+    color:#5d4037;
+    margin:30px 0 15px;
+}
+
+.container p{
+    margin-bottom:20px;
+    color: #807266;
+}
+
+/* TIP BOX */
+.tip-box{
+    background:#efe6dd;
+    padding:20px;
+    border-left:5px solid #8d6e63;
+    border-radius:5px;
+    margin:20px 0;
+}
+
+/* RELATED POSTS */
+.related{
+    margin-top:50px;
+}
+
+.related h3{
+    margin-bottom:20px;
+    color:#5d4037;
+}
+
+.related-posts{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.related-card{
+    flex:1;
+    min-width:250px;
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(62,39,35,0.25);
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.related-card:hover{
+    transform:translateY(-8px);
+}
+
+.related-card img{
+    width:100%;
+    height:150px;
+    object-fit:cover;
+}
+
+.related-card p{
+    padding:15px;
+    font-size:14px;
+    color: #4b2e1e;
+}
+
+/* COMMENTS */
+.comments{
+    margin-top:50px;
+}
+
+.comments input, .comments textarea{
+    width:100%;
+    padding:10px;
+    margin-bottom:10px;
+    border:1px solid #d4c7be;
+    border-radius:8px;
+    outline: none;
+}
+
+.comments input:focus,
+.comments textarea:focus{
+    border-color:#8d6e63;
+}
+
+
+
+.comments button{
+    padding:10px 18px;
+    background:linear-gradient(135deg, #8d6e63 0%, #a1887f 100%);;
+    border:none;
+    color:white;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.comment{
+    background:white;
+    padding:12px;
+    margin-top:10px;
+    border-radius:10px;
+    box-shadow:0 5px 20px rgba(62,39,35,0.15);
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:20px;
+    background:#5d4037;
+    color:white;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .related-posts{
+        flex-direction:column;
+    }
+
+    .header-image h1{
+        font-size:28px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">
+        <img src="images/logo3.png" alt="logo">
+    </div>
+
+    <a href="smallpetcare.html">← Back to Blogs</a>
+</nav>
+
+<!-- HERO IMAGE -->
+<section class="header-image">
+    <div>
+        <h1>Pet Hygiene Essentials</h1>
+        <p>Published February 2026 | 5 min read</p>
+    </div>
+</section>
+
+<!-- ARTICLE CONTENT -->
+<div class="container">
+
+    <p>Taking care of your small pet’s hygiene is more than just keeping them looking cute—it’s an important part of keeping them healthy and comfortable. Clean pets are happier, smell better, and are less likely to get infections or diseases. The good news? Maintaining hygiene for small pets is simple once you get into a routine.</p>
+
+    <h2>1. Grooming Your Small Pets</h2>
+       <ul>
+        <li><h4>Guineapigs and Hamster</h4></li>
+            <p>These little ones usually clean themselves, but they may still need help sometimes. You can gently brush their fur to remove dirt and loose hair. Avoid bathing them with water, as it can make them sick—use dry baths or pet-safe powders if needed.</p>
+
+        <li><h4>Rabbits</h4></li>
+            <p>Rabbits are very clean animals, but brushing them regularly helps prevent fur tangles and hairballs. During shedding season, they may need more frequent grooming.</p>
+
+        <li><h4>Birds</h4></li>
+            <p>Birds love to clean themselves! You can provide a small bowl of water or lightly mist them so they can bathe on their own.</p>
+       </ul>
+
+       <h2>2. Cleaning Their Living Space</h2>
+        <ul>
+            <li>Remove leftover food daily</li>
+            <li>Change bedding regularly (at least once or twice a week)</li>
+            <li>Clean cages, tanks, or enclosures with pet-safe disinfectants</li>
+            <li>Make sure everything is dry before placing your pet back inside</li>
+        </ul>
+        
+        <h2>3. Dental and Nail Care</h2>
+            <p>Hygiene isn’t just about fur and cages—it also includes nails and teeth.</p>
+            
+            <ul>
+                <li>Nails: Trim them carefully when they grow too long</li>
+                <li>Teeth: Provide chew toys or hay to keep teeth from overgrowing</li>
+            </ul>
+
+        <h2>4. Water and Food Cleaniness</h2>
+            <ul>
+                <li>Wash food bowls and water bottles daily</li>
+                <li>Always provide fresh water</li>
+                <li>Avoid leaving old or spoiled food in the cage</li>
+            </ul>
+
+    <div class="tip-box">
+        <h3>❤️ A Few Simple Hygiene Tips</h3>
+            <ul>
+                <li>Keep a regular cleaning schedule</li>
+                <li>Handle your pet with clean hands</li>
+                <li>Watch for signs of illness like dull fur or unusual smell</li>
+                <li>Give your pet a stress-free, clean environment</li>
+            </ul>
+    </div>
+
+    <!-- RELATED POSTS -->
+    <div class="related">
+        <h3>Related Posts</h3>
+        <div class="related-posts">
+            <div class="related-card">
+                <a href="feedingsmallpet.html" class="related-card">
+                <img src="images/smallpetfood.jpg">
+                <p>Feeding Your Small Pets</p>
+                </a>
+            </div>
+
+            <div class="related-card">
+                <a href="exercise&playtime.html" class="related-card">
+                <img src="images/smallpetplay.jpg">
+                <p>Exercise and Playtime</p>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments">
+        <h3>Leave a Comment</h3>
+        <input type="text" id="name" placeholder="Your Name">
+        <textarea id="message" rows="4" placeholder="Write your comment..."></textarea>
+        <button onclick="addComment()">Post Comment</button>
+
+        <div id="commentSection"></div>
+    </div>
+
+</div>
+
+<footer>
+© PetSphere Blogs | All rights reserved
+</footer>
+
+<script>
+function addComment(){
+    let name = document.getElementById("name").value;
+    let message = document.getElementById("message").value;
+
+    if(name === "" || message === ""){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let comment = document.createElement("div");
+    comment.classList.add("comment");
+    comment.innerHTML = "<strong>" + name + ":</strong><p>" + message + "</p>";
+
+    document.getElementById("commentSection").appendChild(comment);
+
+    document.getElementById("name").value = "";
+    document.getElementById("message").value = "";
+}
+</script>
+
+</body>
+</html>

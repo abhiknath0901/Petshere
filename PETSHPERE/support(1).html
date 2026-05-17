@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSphere Support Center</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background:#f8f3e9;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* HERO SECTION */
+header{
+    width:100%;
+    min-height:100vh;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+    color:white;
+}
+
+.hero-content h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:700px;
+    margin:auto;
+    line-height:1.8;
+}
+
+.hero-content button{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    background:white;
+    color:#5d4037;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.4s;
+    font-weight:600;
+}
+
+.hero-content button:hover{
+    transform:scale(1.08);
+    background:#5d4037;
+    color:white;
+}
+
+/* TITLES */
+.section-title{
+    text-align:center;
+    font-size:38px;
+    margin-bottom:50px;
+    color:#5d4037;
+}
+
+/* STATS */
+.stats{
+    padding:80px 10%;
+}
+
+.stats-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:30px;
+}
+
+.stat-box{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(62,39,35,0.15);
+    transition:0.4s;
+}
+
+.stat-box:hover{
+    transform:translateY(-10px);
+}
+
+.stat-box h2{
+    color:#8d6e63;
+    font-size:40px;
+}
+
+.stat-box p{
+    margin-top:10px;
+    color:#666;
+}
+
+/* SUPPORT SECTION */
+.support-container{
+    padding:80px 10%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+}
+
+.contact-info,
+.support-form{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(62,39,35,0.15);
+}
+
+.contact-info h2,
+.support-form h2{
+    margin-bottom:25px;
+    color:#5d4037;
+}
+
+.contact-info p{
+    margin:20px 0;
+    font-size:17px;
+    color:#555;
+}
+
+/* FORM */
+.support-form form{
+    display:flex;
+    flex-direction:column;
+}
+
+.support-form input,
+.support-form select,
+.support-form textarea{
+    margin-bottom:20px;
+    padding:15px;
+    border-radius:10px;
+    border:2px solid #d4c7be;
+    font-size:16px;
+}
+
+.support-form input:focus,
+.support-form select:focus,
+.support-form textarea:focus{
+    outline:none;
+    border-color:#8d6e63;
+}
+
+.support-form textarea{
+    resize:none;
+    height:140px;
+}
+
+.support-form button{
+    padding:15px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.support-form button:hover{
+    background:#5d4037;
+}
+
+.ticket-box{
+    margin-top:20px;
+    background:#efe6dc;
+    padding:15px;
+    border-radius:10px;
+    display:none;
+    color:#5d4037;
+    font-weight:600;
+}
+
+/* FAQ */
+.faq{
+    padding:80px 10%;
+}
+
+.faq-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.faq-item{
+    background:white;
+    margin-bottom:20px;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(62,39,35,0.1);
+}
+
+.faq-question{
+    padding:20px;
+    cursor:pointer;
+    font-weight:600;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    color:white;
+}
+
+.faq-answer{
+    display:none;
+    padding:20px;
+    color:#555;
+    line-height:1.7;
+}
+
+/* EMERGENCY */
+.emergency{
+    margin:80px 10%;
+    background:#a1887f;
+    color:white;
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    font-size:22px;
+    font-weight:600;
+    box-shadow:0 10px 25px rgba(62,39,35,0.2);
+}
+
+/* CHATBOT */
+.chatbot{
+    padding:80px 10%;
+}
+
+.chat-box{
+    background:white;
+    border-radius:20px;
+    padding:40px;
+    box-shadow:0 15px 40px rgba(62,39,35,0.15);
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+}
+
+.chat-box h2{
+    color:#5d4037;
+}
+
+.chat-buttons{
+    margin-top:30px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.chat-buttons button{
+    padding:15px 25px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#8d6e63 0%, #a1887f 100%);
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.chat-buttons button:hover{
+    transform:scale(1.05);
+    background:#5d4037;
+}
+
+.chat-response{
+    margin-top:30px;
+    font-size:18px;
+    color:#555;
+    min-height:40px;
+}
+
+/* FEEDBACK */
+.feedback{
+    padding:80px 10%;
+    text-align:center;
+}
+
+.stars{
+    font-size:50px;
+    cursor:pointer;
+    color:gold;
+}
+
+.rating-message{
+    margin-top:20px;
+    font-size:20px;
+    color:#5d4037;
+}
+
+/* FOOTER */
+footer{
+    background:#5d4037;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:50px;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+
+    .support-container{
+        grid-template-columns:1fr;
+    }
+
+    .hero-content h1{
+        font-size:40px;
+    }
+
+    .hero-content p{
+        font-size:17px;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="hero-content">
+<h1> PetSphere Support Center</h1>
+<p>
+Get assistance for pet grooming, appointments, pet health consultations, payments, and technical support anytime.
+</p>
+<button onclick="scrollToSupport()">Contact Support</button>
+</div>
+</header>
+
+<section class="stats">
+<h1 class="section-title">Why Pet Owners Trust Us</h1>
+
+<div class="stats-container">
+<div class="stat-box">
+<h2>24/7</h2>
+<p>Customer Support</p>
+</div>
+
+<div class="stat-box">
+<h2>5000+</h2>
+<p>Happy Pet Owners</p>
+</div>
+
+<div class="stat-box">
+<h2>98%</h2>
+<p>Customer Satisfaction</p>
+</div>
+
+<div class="stat-box">
+<h2>100+</h2>
+<p>Daily Bookings</p>
+</div>
+</div>
+</section>
+
+<section class="support-container" id="supportSection">
+
+<div class="contact-info">
+<h2>Contact Information</h2>
+
+<p> +91 9876543210</p>
+<p> support@petsphere.com</p>
+<p> Kolkata, West Bengal</p>
+<p> Mon - Sat | 9 AM - 8 PM</p>
+<p>Grooming, Vet & Booking Assistance Available</p>
+</div>
+
+<div class="support-form">
+<h2>Submit Support Ticket</h2>
+
+<form id="ticketForm">
+<input type="text" id="name" placeholder="Full Name" required>
+
+<input type="email" id="email" placeholder="Email Address" required>
+
+<input type="tel" id="phone" placeholder="Phone Number" required>
+
+<select id="petType" required>
+<option value="">Select Pet Type</option>
+<option>Dog</option>
+<option>Cat</option>
+<option>Rabbit</option>
+<option>Bird</option>
+<option>Other</option>
+</select>
+
+<select id="issue" required>
+<option value="">Issue Category</option>
+<option>Booking Issue</option>
+<option>Payment Problem</option>
+<option>Pet Grooming Support</option>
+<option>Health Consultation</option>
+<option>Technical Error</option>
+<option>Feedback & Suggestions</option>
+</select>
+
+<textarea id="message" placeholder="Describe your issue..." required></textarea>
+
+<button type="submit">Generate Ticket</button>
+</form>
+
+<div class="ticket-box" id="ticketBox"></div>
+</div>
+</section>
+
+<section class="faq">
+<h1 class="section-title">Frequently Asked Questions</h1>
+
+<div class="faq-container">
+
+<div class="faq-item">
+<div class="faq-question">How do I book a grooming session?</div>
+<div class="faq-answer">
+You can book grooming services through the booking page by selecting your pet type, service, and preferred date.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Can I reschedule appointments?</div>
+<div class="faq-answer">
+Yes, appointments can be rescheduled before confirmation through the dashboard or support team.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Are online payments secure?</div>
+<div class="faq-answer">
+Yes, PetSphere uses secure payment gateways with encrypted transactions.
+</div>
+</div>
+
+<div class="faq-item">
+<div class="faq-question">Do you provide emergency pet care?</div>
+<div class="faq-answer">
+PetSphere provides basic consultation guidance. For emergencies, contact nearby veterinary clinics immediately.
+</div>
+</div>
+
+</div>
+</section>
+
+<div class="emergency">
+Emergency Alert: For critical pet medical conditions, immediately contact your nearest veterinary hospital.
+</div>
+
+<section class="chatbot">
+<h1 class="section-title">PetSphere AI Assistant</h1>
+
+<div class="chat-box">
+<h2>🤖 How may we help you today?</h2>
+
+<div class="chat-buttons">
+<button onclick="chatReply('booking')">Booking Help</button>
+<button onclick="chatReply('price')">Grooming Prices</button>
+<button onclick="chatReply('care')">Pet Care Tips</button>
+<button onclick="chatReply('vet')">Contact Vet</button>
+</div>
+
+<div class="chat-response" id="chatResponse"></div>
+</div>
+</section>
+
+<section class="feedback">
+<h1 class="section-title">Rate Your Experience</h1>
+
+<div class="stars">
+<span onclick="rate(1)">⭐</span>
+<span onclick="rate(2)">⭐</span>
+<span onclick="rate(3)">⭐</span>
+<span onclick="rate(4)">⭐</span>
+<span onclick="rate(5)">⭐</span>
+</div>
+
+<div class="rating-message" id="ratingMessage"></div>
+</section>
+
+<footer>
+© PetSphere | All Rights Reserved
+</footer>
+
+<script>
+function scrollToSupport(){
+    document.getElementById('supportSection').scrollIntoView({
+        behavior:'smooth'
+    });
+}
+
+const faqQuestions=document.querySelectorAll('.faq-question');
+
+faqQuestions.forEach(question=>{
+    question.addEventListener('click',()=>{
+        const answer=question.nextElementSibling;
+
+        if(answer.style.display==='block'){
+            answer.style.display='none';
+        }
+        else{
+            answer.style.display='block';
+        }
+    });
+});
+
+const ticketForm=document.getElementById('ticketForm');
+const ticketBox=document.getElementById('ticketBox');
+
+ticketForm.addEventListener('submit',function(e){
+    e.preventDefault();
+
+    const randomNumber=Math.floor(Math.random()*100000);
+    const ticketID='PS-'+randomNumber;
+
+    ticketBox.style.display='block';
+    ticketBox.innerHTML='✅ Support Ticket Generated Successfully!<br><br>Your Ticket ID: <b>'+ticketID+'</b>';
+
+    ticketForm.reset();
+});
+
+function chatReply(type){
+    const response=document.getElementById('chatResponse');
+
+    if(type==='booking'){
+        response.innerHTML='You can book appointments directly from the booking page.';
+    }
+
+    else if(type==='price'){
+        response.innerHTML=' Grooming prices start from ₹499 depending on pet size and services.';
+    }
+
+    else if(type==='care'){
+        response.innerHTML=' Regular grooming, healthy food, and vaccinations keep pets happy and healthy.';
+    }
+
+    else if(type==='vet'){
+        response.innerHTML=' Contact our veterinary support team at +91 9876543210.';
+    }
+}
+
+function rate(star){
+    const message=document.getElementById('ratingMessage');
+
+    if(star<=2){
+        message.innerHTML='Thank you for your feedback. We will improve our services.';
+    }
+
+    else if(star===3){
+        message.innerHTML=' Thank you! We hope to serve you even better.';
+    }
+
+    else{
+        message.innerHTML=' Thank you! We are glad you loved PetSphere support.';
+    }
+}
+</script>
+
+</body>
+</html>

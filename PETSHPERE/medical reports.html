@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PetSphere Dynamic Health Reports</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+body{
+    background:#f8f3e9;
+    padding:40px 20px;
+    color:#4b2e1e;
+    line-height:1.6;
+}
+
+/* MAIN WRAPPER */
+.container{
+    max-width:1350px;
+    margin:auto;
+}
+
+/* TITLE */
+.title{
+    text-align:center;
+    font-size:2.8rem;
+    font-weight:700;
+    color:#5d4037;
+    margin-bottom:40px;
+}
+
+/* TOP PROFILE BOX */
+.top-box{
+    background:#ffffff;
+    padding:28px;
+    border-radius:26px;
+    box-shadow:0 15px 35px rgba(62,39,35,0.10);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:22px;
+    margin-bottom:35px;
+    position:relative;
+    overflow:hidden;
+}
+
+.top-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+/* PET INFO */
+.pet-info h2{
+    font-size:2rem;
+    color:#5d4037;
+    margin-bottom:10px;
+}
+
+.pet-info p{
+    font-size:15px;
+    color:#6c584c;
+}
+
+/* SELECT */
+select{
+    padding:12px 16px;
+    border-radius:12px;
+    border:2px solid #dcc7b5;
+    background:#fffaf4;
+    color:#5d4037;
+    font-size:15px;
+    outline:none;
+    cursor:pointer;
+}
+
+select:focus{
+    border-color:#8d6e63;
+}
+
+/* STATUS */
+.status{
+    padding:12px 22px;
+    border-radius:30px;
+    background:#e7f7e7;
+    color:green;
+    font-weight:700;
+    font-size:15px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:28px;
+}
+
+/* CARD */
+.card{
+    background:#ffffff;
+    padding:28px;
+    border-radius:24px;
+    box-shadow:0 15px 35px rgba(62,39,35,0.08);
+    transition:0.35s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 40px rgba(62,39,35,0.14);
+}
+
+.card h2{
+    font-size:1.5rem;
+    color:#5d4037;
+    margin-bottom:16px;
+}
+
+.card p{
+    color:#6c584c;
+    font-size:15px;
+}
+
+/* LIST */
+.list{
+    color:#5b4632;
+    line-height:2;
+    font-size:15px;
+}
+
+/* PROGRESS */
+.progress{
+    background:#ece5dd;
+    height:12px;
+    border-radius:30px;
+    overflow:hidden;
+    margin:12px 0 18px;
+}
+
+.fill{
+    height:100%;
+    border-radius:30px;
+    background:linear-gradient(135deg,#8d6e63,#5d4037);
+}
+
+/* BUTTON */
+.btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:13px 22px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(135deg,#8d6e63,#a1887f);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.btn:hover{
+    background:#5d4037;
+    transform:translateY(-2px);
+}
+
+/* ALERT */
+.alert{
+    background:#fff6ef;
+    padding:14px;
+    border-left:5px solid #c47b42;
+    border-radius:12px;
+    color:#7a5238;
+    margin-top:10px;
+    font-size:14px;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    margin-top:45px;
+    font-size:14px;
+    color:#7a6759;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+body{
+    padding:25px 12px;
+}
+
+.title{
+    font-size:2rem;
+}
+
+.top-box{
+    padding:22px;
+    flex-direction:column;
+    align-items:flex-start;
+}
+
+.pet-info h2{
+    font-size:1.7rem;
+}
+
+.card{
+    padding:22px;
+}
+
+.card h2{
+    font-size:1.3rem;
+}
+
+.btn{
+    width:100%;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<h1 class="title">PetSphere Health Check Reports</h1>
+
+<!-- Top Dynamic Section -->
+<div class="top-box">
+<div class="pet-info">
+<h2 id="petName">Bruno</h2>
+<p>
+Breed: <span id="breed">Labrador</span><br>
+Age: <span id="age">3 Years</span><br>
+Weight: <span id="weight">24 Kg</span>
+</p>
+</div>
+
+<div>
+<select onchange="changePet(this.value)">
+<option value="bruno">Bruno</option>
+<option value="bella">Bella</option>
+<option value="oreo">Oreo</option>
+<option value="rocky">Rocky</option>
+<option value="Cookie">Cookie</option>
+<option value="nova">Nova</option>
+<option value="clein">Clein</option>
+</select>
+</div>
+
+<div class="status" id="healthStatus">Healthy</div>
+</div>
+
+<div class="grid">
+
+<!-- Reports -->
+<div class="card">
+<h2>Recent Reports</h2>
+<div class="list" id="reports">
+• Vaccination - 12 Apr 2026<br>
+• Dental Checkup - 05 Mar 2026<br>
+• Weight Check - 20 Feb 2026
+</div>
+</div>
+
+<!-- Progress -->
+<div class="card">
+<h2>Health Progress</h2>
+
+Weight Recovery
+<div class="progress">
+<div class="fill" id="bar1" style="width:85%"></div>
+</div>
+
+Vaccination Done
+<div class="progress">
+<div class="fill" id="bar2" style="width:70%"></div>
+</div>
+
+Diet Success
+<div class="progress">
+<div class="fill" id="bar3" style="width:90%"></div>
+</div>
+
+</div>
+
+<!-- Appointments -->
+<div class="card">
+<h2>Upcoming Visits</h2>
+<div class="list" id="visits">
+• Vet Visit - 5 May<br>
+• Booster Dose - 12 May
+</div>
+<button class="btn" onclick="bookVisit()">Book New</button>
+</div>
+
+<!-- Medicine -->
+<div class="card">
+<h2>Medicine Reminder</h2>
+<div class="list" id="meds">
+• Syrup - 8 AM<br>
+• Tablet - 8 PM
+</div>
+</div>
+
+<!-- Alerts -->
+<div class="card">
+<h2>Health Alerts</h2>
+<div id="alerts">
+<div class="alert">Vaccination due next week.</div>
+</div>
+</div>
+
+<!-- Download -->
+<div class="card">
+<h2>Download Reports</h2>
+<p>Generate latest report instantly.</p>
+<button class="btn" onclick="downloadMsg()">Download PDF</button>
+</div>
+
+</div>
+
+<div class="footer">
+© PetSphere Report Guide | All Rights Reserved
+</div>
+
+</div>
+
+<script>
+
+const pets = {
+
+bruno:{
+name:"Bruno",
+breed:"Labrador",
+age:"3 Years",
+weight:"24 Kg",
+status:"Healthy",
+reports:`• Vaccination - 12 Apr 2026<br>
+• Dental Checkup - 05 Mar 2026<br>
+• Weight Check - 20 Feb 2026`,
+visits:`• Vet Visit - 5 May<br>• Booster Dose - 12 May`,
+meds:`• Syrup - 8 AM<br>• Tablet - 8 PM`,
+alert:`Vaccination due next week.`,
+bars:["85%","70%","90%"]
+},
+
+bella:{
+name:"Bella",
+breed:"Persian Cat",
+age:"2 Years",
+weight:"5 Kg",
+status:"Excellent",
+reports:`• Fur Check - 15 Apr 2026<br>
+• Vaccination - 02 Mar 2026`,
+visits:`• Grooming - 7 May`,
+meds:`• Vitamins - 9 AM`,
+alert:`No alerts currently.`,
+bars:["92%","88%","95%"]
+},
+
+oreo:{
+name:"Oreo",
+breed:"Rabbit",
+age:"1 Year",
+weight:"2 Kg",
+status:"Needs Care",
+reports:`• Teeth Check - 1 Apr 2026<br>
+• Weight Check - 15 Mar 2026`,
+visits:`• Vet Visit - 3 May`,
+meds:`• Calcium Drops - 10 AM`,
+alert:`Low weight detected.`,
+bars:["60%","75%","55%"]
+},
+
+rocky:{
+name:"Rocky",
+breed:"Baegal",
+age:"4 Years",
+weight:"30 Kg",
+status:"Fit",
+reports:`• Bone Check - 10 Apr 2026<br>
+• Vaccination - 18 Mar 2026<br>
+• Fitness Test - 22 Feb 2026`,
+visits:`• Vet Visit - 9 May<br>
+• Fitness Review - 15 May`,
+meds:`• Protein Syrup - 7 AM<br>
+• Calcium Tablet - 9 PM`,
+alert:`Regular exercise recommended.`,
+bars:["88%","80%","86%"]
+},
+
+Cookie:{
+name:"Cookie",
+breed:"Hamster",
+age:"2 Years",
+weight:"20 Kg",
+status:"Excellent",
+reports:`• Vaccination - 14 Apr 2026<br>
+• Skin Check - 21 Mar 2026`,
+visits:`• Grooming - 11 May<br>
+• Vet Visit - 20 May`,
+meds:`• Omega Oil - 8 AM`,
+alert:`Healthy and active.`,
+bars:["94%","91%","93%"]
+},
+
+nova:{
+name:"Nova",
+breed:"Bird",
+age:"3 Years",
+weight:"26 Kg",
+status:"Active",
+reports:`• Eye Check - 8 Apr 2026<br>
+• Vaccination - 12 Mar 2026`,
+visits:`• Cooling Therapy - 16 May`,
+meds:`• Multivitamin - 9 AM<br>
+• Energy Booster - 6 PM`,
+alert:`Avoid excessive heat exposure.`,
+bars:["89%","85%","90%"]
+},
+
+clein:{
+name:"Clein",
+breed:"Bird",
+age:"1.5 Years",
+weight:"12 Kg",
+status:"Healthy",
+reports:`• Ear Cleaning - 5 Apr 2026<br>
+• Weight Check - 25 Mar 2026`,
+visits:`• Vet Visit - 18 May`,
+meds:`• Deworming Syrup - 7 AM`,
+alert:`No health issues detected.`,
+bars:["82%","78%","87%"]
+}
+
+};
+
+function changePet(value){
+
+let pet = pets[value];
+
+document.getElementById("petName").innerText = pet.name;
+document.getElementById("breed").innerText = pet.breed;
+document.getElementById("age").innerText = pet.age;
+document.getElementById("weight").innerText = pet.weight;
+document.getElementById("healthStatus").innerText = pet.status;
+document.getElementById("reports").innerHTML = pet.reports;
+document.getElementById("visits").innerHTML = pet.visits;
+document.getElementById("meds").innerHTML = pet.meds;
+document.getElementById("alerts").innerHTML = `<div class="alert">${pet.alert}</div>`;
+
+document.getElementById("bar1").style.width = pet.bars[0];
+document.getElementById("bar2").style.width = pet.bars[1];
+document.getElementById("bar3").style.width = pet.bars[2];
+
+}
+
+function bookVisit(){
+alert("Appointment Booking Opened!");
+}
+
+function downloadMsg(){
+alert("PDF Report Downloaded Successfully!");
+}
+
+</script>
+
+</body>
+</html>
