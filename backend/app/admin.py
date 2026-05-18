@@ -6,6 +6,7 @@ from .models import UserProfile, Pet, Cart, Order
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'email', 'name', 'phone', 'is_active', 'is_staff')
+
 @admin.register(Pet)
 class PetsAdmin(admin.ModelAdmin):
     list_display = (
@@ -27,6 +28,7 @@ class PetsAdmin(admin.ModelAdmin):
     )
     list_filter = ('type', 'category', 'age')
     search_fields = ('name', 'description')
+    
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):      
     list_display = ('id', 'user', 'pet', 'quantity')
