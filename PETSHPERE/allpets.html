@@ -261,10 +261,12 @@ input:focus,select:focus{
 
 </div>
 
-<script src="petsdata.js"></script>
+<script type="module" src="petsdata.js"></script>
 <script src="cart.js"></script>
 
-<script>
+<script type="module">
+import { API_URL } from './config.js';
+import { allPets } from './petsdata.js';
 const container = document.getElementById("petContainer");
 
 function display(list){
@@ -273,7 +275,7 @@ function display(list){
   list.forEach(p => {
     container.innerHTML += `
       <div class="card">
-        <img src="${p.img}" alt="${p.name}">
+        <img src="${API_URL}${p.img}" alt="${p.name}">
         <div class="card-content">
           <h3>${p.name}</h3>
           <p>${p.desc}</p>
@@ -344,6 +346,7 @@ document.getElementById("priceFilter").addEventListener("change", applyFilters);
 document.getElementById("sort").addEventListener("change", applyFilters);
 
 display(allPets);
+
 </script>
 
 </body>
