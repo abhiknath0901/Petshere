@@ -1,11 +1,15 @@
 from django.contrib import admin
 
-from .models import Pet
+from .models import UserProfile, Pet, Cart, Order
 
-# Register your models here.
+# # Register your models here.
+@admin.register(UserProfile)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('id', 'email', 'name', 'phone', 'is_active', 'is_staff')
 @admin.register(Pet)
 class PetsAdmin(admin.ModelAdmin):
     list_display = (
+        'id',
         'name',
         'type',
         'category',
@@ -14,11 +18,17 @@ class PetsAdmin(admin.ModelAdmin):
         'price',
         'breed_info',
         'img',
-        'description',
+        'desc',
         'health',
         'behavior',
         'care',
         'extra',
         'seller'
     )
-   
+    list_filter = ('type', 'category', 'age')
+    search_fields = ('name', 'description')
+@admin.register(Cart)
+class CartAdmin(admin.ModelAdmin):      
+    list_display = ('id', 'user', 'pet', 'quantity')
+    list_filter = ('user',)
+    search_fields = ('user__email', 'pet__name')
