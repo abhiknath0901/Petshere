@@ -112,6 +112,8 @@ function updateNav() {
 // =========================
 // LOGIN FUNCTION
 // =========================
+
+
 function handleLogin(e) {
 
   e.preventDefault();
@@ -122,41 +124,41 @@ function handleLogin(e) {
   const password =
     document.getElementById("loginPassword").value;
 
-  const users =
-    JSON.parse(localStorage.getItem("users") || "[]");
+  fetch(`${API_URL}/petshpere/login/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email, password })
+  })
+    .then(response => response.json())
+    .then(data => {
 
-  const user = users.find(
-    (u) =>
-      u.email === email &&
-      u.password === password
-  );
+      if (data.access && data.refresh && data.user) {
+        localStorage.setItem("access", data.access);
+        localStorage.setItem("refresh", data.refresh);
+        localStorage.setItem("currentUser", JSON.stringify(data.user));
+        console.log("Logged In");
+        currentUser = data.user;
+        updateNav();
 
-  // Successful Login
-  if (user) {
+        showHome();
 
-    currentUser = {
-      name: user.name,
-      email: user.email
-    };
+        e.target.reset();
 
-    localStorage.setItem(
-      "currentUser",
-      JSON.stringify(currentUser)
-    );
+      } else {
+        console.log(data.error);
+        alert("Login failed: " + data.error);
 
-    updateNav();
+      }
+    }).catch(error => {
+      console.log(error);
 
-    showHome();
+    })
 
-    e.target.reset();
-  }
-
-  // Failed Login
-  else {
-
-    alert("Invalid email or password!");
-  }
 }
+
+
 
 // =========================
 // SIGNUP FUNCTION
@@ -180,44 +182,70 @@ function handleSignup(e) {
       document.getElementById("signupPhone").value,
   };
 
-  const users =
-    JSON.parse(localStorage.getItem("users") || "[]");
+  fetch(`${API_URL}/petshpere/signup/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(newUser)
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
 
-  // Check Existing User
-  if (
-    users.some((u) => u.email === newUser.email)
-  ) {
+        console.log(data.error);
+        alert("Signup failed: " + data.error);
+        return
 
-    alert("Email already registered!");
+      }
+      console.log(data.message);
+      alert(data.message + " Please login to continue.");
+      showLogin();
+      e.target.reset();
+    }).catch(error => {
+      console.log(error);
+    })
 
-    return;
-  }
 
-  // Save User
-  users.push(newUser);
-
-  localStorage.setItem(
-    "users",
-    JSON.stringify(users)
-  );
-
-  alert("Account created successfully! Please login.");
-
-  showLogin();
-
-  e.target.reset();
 }
 
 // =========================
 // LOGOUT FUNCTION
 // =========================
 function logout() {
+  const refresh = localStorage.getItem('refresh');
+  const access = localStorage.getItem('access');
+  fetch(`${API_URL}/petshpere/logout/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${access}`
+    },
+    body: JSON.stringify({ refresh })
+  })
+    .then(response => response.json())
+    .then(data => {
+      if (data.error) {
+        console.log(data.error);
+        alert("Logout failed: " + data.error);
+        return;
+      }
+      console.log(data.message);
+      
+      currentUser = null;
 
-  currentUser = null;
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("access");
+      localStorage.removeItem("refresh");
+      alert(data.message);
 
-  localStorage.removeItem("currentUser");
+      updateNav();
 
-  updateNav();
+      showHome();
+    })
+    .catch(error => {
+      console.log(error);
+    });
 
-  showHome();
+
 }

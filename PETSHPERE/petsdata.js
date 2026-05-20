@@ -1,39 +1,58 @@
-import { API_URL } from './config.js'
+function fetchallPets() {
 
-let petsData = []
+  const cachedData = localStorage.getItem("allPets");
 
-export async function fetchPetsData() {
-  if (petsData.length > 0) {
-    return petsData
-  }
-
-  const cachedData = localStorage.getItem('petsData')
   if (cachedData) {
+
     try {
-      const parsedData = JSON.parse(cachedData)
-      if (Date.now() < parsedData.expiry) {
-        petsData = parsedData.data
-        return petsData
+
+      const parsedData = JSON.parse(cachedData);
+
+      if (
+        Date.now() < parsedData.expiry &&
+        parsedData.data.length > 0
+      ) {
+
+        console.log("cached");
+
+        // return promise for consistency
+        return Promise.resolve(parsedData.data);
       }
-      
-      localStorage.removeItem('petsData')
-      
+
+      localStorage.removeItem("allPets");
+
     } catch (error) {
-      console.error('Error parsing cached pets data:', error)
-      localStorage.removeItem('petsData') 
+
+      console.error("Error parsing cached pets data:", error);
+
+      localStorage.removeItem("allPets");
     }
   }
-  const response = await fetch(`${API_URL}/petshpere/pets/`)
-  const data = await response.json()
-  petsData = data
-  localStorage.setItem('petsData', JSON.stringify({ data: petsData, expiry: Date.now() + 1000 * 60 * 30 })) // Cache for 30 minutes
-  return petsData
+
+  return fetch(`${API_URL}/petshpere/pets/`)
+    .then(response => response.json())
+    .then(data => {
+
+      // save REAL data
+      localStorage.setItem(
+        "allPets",
+        JSON.stringify({
+          data: data,
+          expiry: Date.now() + 1000 * 60 * 30
+        })
+      );
+
+      return data;
+    });
 }
 
-export const allPets = await fetchPetsData();
-console.log(allPets);
-
-
+let allPets = [];
+fetchallPets().then(data => {
+  allPets = data;
+}).catch(error => {
+  console.error("Error fetching pets data:", error);
+  allPets = [];
+});
 
 
 // const petsData = [{

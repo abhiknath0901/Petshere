@@ -299,7 +299,7 @@ h1{
   </div>
 
 </div>
-
+<script src="config.js"></script>
 <script src="petsdata.js"></script>
 <script src="cart.js"></script>
 
@@ -327,8 +327,7 @@ if(!pet){
 // FILL DETAILS
 document.getElementById("name").innerText = pet.name;
 
-document.getElementById("mainImg").src =
-pet.img || "https://via.placeholder.com/400";
+document.getElementById("mainImg").src = `${API_URL}${pet.img}`;
 
 document.getElementById("type").innerText = pet.type;
 
