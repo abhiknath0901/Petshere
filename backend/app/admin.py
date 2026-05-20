@@ -5,7 +5,7 @@ from .models import UserProfile, Pet, Cart, Order
 # # Register your models here.
 @admin.register(UserProfile)
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'email', 'name', 'phone', 'is_active', 'is_staff')
+    list_display = ('id', 'email', 'name', 'password', 'phone', 'is_active', 'is_staff')
 
 @admin.register(Pet)
 class PetsAdmin(admin.ModelAdmin):
