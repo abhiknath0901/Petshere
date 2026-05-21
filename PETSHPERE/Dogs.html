@@ -257,7 +257,7 @@ function display(){
   dogs.forEach(d => {
     container.innerHTML += `
       <div class="card">
-        <img src="${API_URL}${d.img}" alt="${d.name}">
+        <img src="${d.img}" alt="${d.name}">
         <div class="card-content">
           <h3>${d.name}</h3>
 

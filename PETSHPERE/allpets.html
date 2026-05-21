@@ -273,7 +273,7 @@ function display(list){
   list.forEach(p => {
     container.innerHTML += `
       <div class="card">
-        <img src="${API_URL}${p.img}" alt="${p.name}">
+        <img src="${p.img}" alt="${p.name}">
         <div class="card-content">
           <h3>${p.name}</h3>
           <p>${p.desc}</p>
