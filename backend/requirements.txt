@@ -1,0 +1,9 @@
+django
+django-cors-headers
+djangorestframework
+djangorestframework-simplejwt
+dj-database-url
+python-dotenv
+Pillow
+gunicorn
+whitenoise

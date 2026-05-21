@@ -20,22 +20,5 @@ class Migration(migrations.Migration):
                 ('pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.pet')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
-        ),
-        migrations.CreateModel(
-            name='Order',
-            fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('quantity', models.IntegerField(default=1)),
-                ('order_date', models.DateTimeField(auto_now_add=True)),
-                ('receciver_name', models.CharField(max_length=255)),
-                ('receciver_phone', models.CharField(max_length=20)),
-                ('house_no_or_name', models.CharField(max_length=255)),
-                ('street_area_loaclity', models.CharField(max_length=255)),
-                ('city', models.CharField(max_length=255)),
-                ('state', models.CharField(max_length=255)),
-                ('landmark', models.CharField(blank=True)),
-                ('pet', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app.pet')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
-            ],
-        ),
+        )
     ]

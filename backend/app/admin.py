@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import UserProfile, Pet, Cart, Order
+from .models import UserProfile, Pet, Cart, Order, OrderItem
 
 # # Register your models here.
 @admin.register(UserProfile)
@@ -34,3 +34,20 @@ class CartAdmin(admin.ModelAdmin):
     list_display = ('id', 'user', 'pet', 'quantity')
     list_filter = ('user',)
     search_fields = ('user__email', 'pet__name')
+
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = (
+        'created_at',
+        'address',
+        'total_price',
+        'status',
+        'user'
+    )
+    search_fields = ('address','user')
+    list_filter = ('created_at','status')
+    inlines = [OrderItemInline]
