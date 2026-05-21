@@ -41,7 +41,7 @@ async function fetchallPets() {
         "allPets",
         JSON.stringify({
           data: responseData,
-          expiry: Date.now() + 1000 * 60 * 30
+          expiry: Date.now() + 1000 * 60 * 5
         })
       )
       return responseData.data;
