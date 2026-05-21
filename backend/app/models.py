@@ -56,6 +56,13 @@ class Order(models.Model):
     pet = models.ForeignKey(Pet, on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
     order_date = models.DateTimeField(auto_now_add=True)
+    receciver_name = models.CharField(max_length=255)
+    receciver_phone = models.CharField(max_length=20)
+    house_no_or_name = models.CharField(max_length=255)
+    street_area_loaclity = models.CharField(max_length=255)
+    city = models.CharField(max_length=255)
+    state = models.CharField(max_length=255)
+    landmark = models.CharField(blank=True) 
 
     def __str__(self):
-        return f"Order by {self.user.email} for {self.pet.name} (Quantity: {self.quantity})"
+        return f"Order by {self.receciver_name} for {self.pet.name} (Quantity: {self.quantity})"

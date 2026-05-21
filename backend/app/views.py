@@ -48,8 +48,9 @@ def login_user(request):
         'access': str(refresh.access_token)
     }, status=status.HTTP_200_OK)
 
-# logout
+# Logout
 @api_view(['POST'])
+@permission_classes([AllowAny])
 def logout_user(request):
     try:
         refresh_token = request.data.get('refresh')
@@ -70,7 +71,8 @@ def get_pets(request):
 # Get cart items for a user
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
-def get_cart(request, user_id):
+def get_cart(request):
+    user_id = request.user.id
     try:
         user = User.objects.get(id=user_id)
     except User.DoesNotExist:
@@ -80,63 +82,33 @@ def get_cart(request, user_id):
     serializer = CartSerializer(cart_items, many=True)
     return Response(serializer.data)
 
-# Add to cart
+# Syncing cart data from frontend to backend
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
-def add_to_cart(request, user_id, pet_id):
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist:
-        return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
+def sync_cart(request):
+    user = request.user
+    cart_data = request.data.get('cart',[])
+    Cart.objects.filter(user=user).delete()
 
-    try:
-        pet = Pet.objects.get(id=pet_id)
-    except Pet.DoesNotExist:
-        return Response({'error': 'Pet not found.'}, status=status.HTTP_404_NOT_FOUND)
+    for item in cart_data:
+        pet_id = item.get('id')
+        quantity = item.get('qty')
 
-    cart_item, created = Cart.objects.get_or_create(user=user, pet=pet)
-    if not created:
-        cart_item.quantity += 1
-        cart_item.save()
+        if not pet_id:
+                continue
+        
+        try:
+            
 
-    serializer = CartSerializer(cart_item)
-    return Response(serializer.data)
-
-# remove item from cart
-@api_view(['POST'])
-@permission_classes([IsAuthenticated])
-def remove_from_cart(request, user_id, pet_id):
-    try:
-        user = User.objects.get(id=user_id)
-    except User.DoesNotExist:
-        return Response({'error': 'User not found.'}, status=status.HTTP_404_NOT_FOUND)
-
-    try:
-        pet = Pet.objects.get(id=pet_id)
-    except Pet.DoesNotExist:
-        return Response({'error': 'Pet not found.'}, status=status.HTTP_404_NOT_FOUND)
-
-    try:
-        cart_item = Cart.objects.get(user=user, pet=pet)
-    except Cart.DoesNotExist:
-        return Response({'error': 'Item not found in cart.'}, status=status.HTTP_404_NOT_FOUND)
-
-    if cart_item.quantity > 1:
-        cart_item.quantity -= 1
-        cart_item.save()
-        serializer = CartSerializer(cart_item)
-        return Response(serializer.data)
-    else:
-        cart_item.delete()
-        return Response({'message': 'Item removed from cart.'}, status=status.HTTP_200_OK)
-
-# clear cart
-@api_view(['DELETE'])
-@permission_classes([IsAuthenticated])
-def clear_cart(request, user_id):
-    try:
-        user = User.objects.get(id = user_id)
-    except User.DoesNotExist:
-        return Response({"error":"User not found."}, status = status.HTTP_404_NOT_FOUND)
-    Cart.objects.filter(user = user).delete()
-    return Response({"message":"Cart cleared successfully."}, status = status.HTTP_200_OK)
+            pet = Pet.objects.get(id = pet_id )
+            Cart.objects.create(
+                user = user,
+                pet = pet,
+                quantity = quantity
+            )
+        except Pet.DoesNotExist:
+            continue
+    
+    return Response({
+        'message' : 'Cart synced successfully.'
+    })
