@@ -3,16 +3,21 @@ from .models import Pet, Cart, Order, Address, OrderItem
 
 class PetSerializer(serializers.ModelSerializer):
 
-    image = serializers.SerializerMethodField()
+    img = serializers.SerializerMethodField()
 
     class Meta:
         model = Pet
         fields = '__all__'
 
+    
     def get_image(self, obj):
 
-        if obj.image:
-            return obj.image.url
+        try:
+            if obj.img:
+                return obj.img.url
+
+        except Exception:
+            pass
 
         return None
 
