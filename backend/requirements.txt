@@ -7,3 +7,4 @@ python-dotenv
 Pillow
 gunicorn
 whitenoise
+psycopg2-binary
