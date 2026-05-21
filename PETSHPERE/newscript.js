@@ -114,7 +114,7 @@ function updateNav() {
 // =========================
 
 
-function handleLogin(e) {
+async function handleLogin(e) {
 
   e.preventDefault();
 
@@ -123,38 +123,40 @@ function handleLogin(e) {
 
   const password =
     document.getElementById("loginPassword").value;
-
-  fetch(`${API_URL}/petshpere/login/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ email, password })
-  })
-    .then(response => response.json())
-    .then(data => {
-
-      if (data.access && data.refresh && data.user) {
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
-        localStorage.setItem("currentUser", JSON.stringify(data.user));
-        console.log("Logged In");
-        currentUser = data.user;
-        updateNav();
-
-        showHome();
-
-        e.target.reset();
-
-      } else {
-        console.log(data.error);
-        alert("Login failed: " + data.error);
-
-      }
-    }).catch(error => {
-      console.log(error);
-
+  try {
+    const response = await fetch(`${API_URL}/petshpere/login/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
     })
+    const data = await response.json();
+    if (response.ok) {
+
+      localStorage.setItem("access", data.access);
+      localStorage.setItem("refresh", data.refresh);
+      localStorage.setItem("currentUser", JSON.stringify(data.user));
+      console.log("Logged In");
+      currentUser = data.user;
+      updateNav();
+
+      showHome();
+
+      e.target.reset();
+
+    } else {
+      console.log(data.error);
+      alert("Login failed: " + data.error);
+
+    }
+  } catch (error) {
+    console.log(error);
+
+  }
+
+
+
 
 }
 
@@ -163,7 +165,7 @@ function handleLogin(e) {
 // =========================
 // SIGNUP FUNCTION
 // =========================
-function handleSignup(e) {
+async function handleSignup(e) {
 
   e.preventDefault();
 
@@ -182,70 +184,62 @@ function handleSignup(e) {
       document.getElementById("signupPhone").value,
   };
 
-  fetch(`${API_URL}/petshpere/signup/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(newUser)
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-
-        console.log(data.error);
-        alert("Signup failed: " + data.error);
-        return
-
-      }
-      console.log(data.message);
-      alert(data.message + " Please login to continue.");
-      showLogin();
-      e.target.reset();
-    }).catch(error => {
-      console.log(error);
+  try {
+    const response = await fetch(`${API_URL}/petshpere/signup/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newUser)
     })
+    const data = await response.json();
+    if (!response.ok) {
+      console.log(data.error);
+      alert("Signup failed: " + data.error);
+      return;
+    }
+    console.log(data.message);
+    alert(data.message + " Please login to continue.");
+    showLogin();
+    e.target.reset();
+  } catch (e) {
+    console.log(e);
 
-
+  }
 }
+
 
 // =========================
 // LOGOUT FUNCTION
 // =========================
-function logout() {
+async function logout() {
   const refresh = localStorage.getItem('refresh');
-  const access = localStorage.getItem('access');
-  fetch(`${API_URL}/petshpere/logout/`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${access}`
-    },
-    body: JSON.stringify({ refresh })
-  })
-    .then(response => response.json())
-    .then(data => {
-      if (data.error) {
-        console.log(data.error);
-        alert("Logout failed: " + data.error);
-        return;
-      }
-      console.log(data.message);
-      
-      currentUser = null;
-
-      localStorage.removeItem("currentUser");
-      localStorage.removeItem("access");
-      localStorage.removeItem("refresh");
-      alert(data.message);
-
-      updateNav();
-
-      showHome();
-    })
-    .catch(error => {
-      console.log(error);
+  try {
+    const response = await fetch(`${API_URL}/petshpere/logout/`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ refresh })
     });
 
+    const data = await response.json();
+    console.log(data.message);
+    syncCart()
+
+    currentUser = null;
+
+    localStorage.removeItem("currentUser");
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    alert(data.message);
+
+    updateNav();
+
+    showHome();
+    
+  } catch (error) {
+    console.log(error);
+  }
 
 }

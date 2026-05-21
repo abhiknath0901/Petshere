@@ -1,4 +1,4 @@
-function fetchallPets() {
+async function fetchallPets() {
 
   const cachedData = localStorage.getItem("allPets");
 
@@ -15,8 +15,8 @@ function fetchallPets() {
 
         console.log("cached");
 
-        // return promise for consistency
-        return Promise.resolve(parsedData.data);
+       
+        return parsedData.data;
       }
 
       localStorage.removeItem("allPets");
@@ -29,30 +29,34 @@ function fetchallPets() {
     }
   }
 
-  return fetch(`${API_URL}/petshpere/pets/`)
-    .then(response => response.json())
-    .then(data => {
+  try {
+    const response = await fetch(`${API_URL}/petshpere/pets/`);
+    const responseData = await response.json();
+    if(!response.ok){
+      console.log(responseData.error)
+      return [];
+    }
 
-      // save REAL data
-      localStorage.setItem(
+    localStorage.setItem(
         "allPets",
         JSON.stringify({
-          data: data,
+          data: responseData,
           expiry: Date.now() + 1000 * 60 * 30
         })
-      );
-
-      return data;
-    });
+      )
+      return responseData.data;
+  } catch (error) {
+    console.error("Error fetching pets data:", error);
+    return [];
+  }
 }
 
 let allPets = [];
-fetchallPets().then(data => {
-  allPets = data;
-}).catch(error => {
-  console.error("Error fetching pets data:", error);
-  allPets = [];
-});
+(async()=>{
+  allPets = await fetchallPets();
+})()
+
+
 
 
 // const petsData = [{

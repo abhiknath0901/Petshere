@@ -19,17 +19,20 @@ function addToCart(pet) {
   saveCart(cart);
   showToast(`${pet.name} added to cart 🛒`);
   updateCartBadge();
+  debouceSync()
 }
 
 function removeFromCart(petId) {
   const cart = getCart().filter(item => item.id !== petId);
   saveCart(cart);
   updateCartBadge();
+  debouceSync()
 }
 
 function clearCart() {
   localStorage.removeItem("petCart");
   updateCartBadge();
+  debouceSync()
 }
 
 function getCartCount() {
@@ -43,6 +46,84 @@ function updateCartBadge() {
     badge.textContent = count;
     badge.style.display = count > 0 ? "flex" : "none";
   }
+}
+
+async function fetchCart() {
+  const token = localStorage.getItem("access")
+  if(!token) return
+  try{
+    const response = await fetch(`${API_URL}/petshpere/cart/`,{
+      method:'GET',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization' : `Bearer ${token}`
+      }
+    })
+    const data = await response.json();
+    if(response.status === 401){
+      console.log(data.error);
+      logout()
+      return
+    }
+    if(!response.ok){
+      console.log(data.error);
+      return
+    }
+    console.log(data);
+    let cart = []
+    data.forEach(item => {
+      let pet = allPets.find(e => e.id === item.pet )
+      if (!pet) return;
+      cart.push({ id: pet.id, name: pet.name, price: pet.price, img: pet.img, type: pet.type, qty: item.quantity });
+    });
+    console.log(cart);
+    
+    saveCart(cart)
+    updateCartBadge()
+  } catch(e){
+    console.log(e);
+    
+  }
+}
+
+async function syncCart() {
+  const token = localStorage.getItem("access")
+  if(!token) return
+  let cart = getCart()
+  try{
+    const response = await fetch(`${API_URL}/petshpere/cart/sync/`,{
+      method:'POST',
+      headers:{
+        'Content-Type':'application/json',
+        'Authorization' : `Bearer ${token}`
+      },
+      body: JSON.stringify({cart})
+    })
+    const data = await response.json();
+    if(response.status === 401){
+      console.log(data.error);
+      logout()
+      return
+    }
+    if(!response.ok){
+      console.log(data.error);
+      return
+    }
+    console.log(data.message);
+  } catch(e){
+    console.log(e);
+    
+  }
+}
+
+let syncTimeOut;
+
+function debouceSync() {
+  clearTimeout(syncTimeOut);
+
+  syncTimeOut = setTimeout(() => {
+    syncCart();
+  }, 5000);
 }
 
 // ── Toast notification ────────────────────────────────────────────────────

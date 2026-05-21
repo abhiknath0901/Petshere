@@ -293,7 +293,7 @@ body{
   <div id="cartBody"></div>
 
 </div>
-
+<script src="config.js"></script>
 <script src="petsdata.js"></script>
 <script src="cart.js"></script>
 
@@ -326,12 +326,10 @@ function render(){
   let html = "";
 
   cart.forEach(item => {
-
     html += `
       <div class="cart-item" id="item-${item.id}">
 
-        <img src="${item.img}" alt="${item.name}" 
-        onerror="this.src='https://via.placeholder.com/90x80'">
+        <img src="${API_URL}${item.img}" alt="${item.name}"">
 
         <div class="item-info">
 
