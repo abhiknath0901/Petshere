@@ -9,6 +9,7 @@ function saveCart(cart) {
 }
 
 function addToCart(pet) {
+  debouceSync()
   const cart = getCart();
   const existing = cart.find(item => item.id === pet.id);
   if (existing) {
@@ -19,20 +20,24 @@ function addToCart(pet) {
   saveCart(cart);
   showToast(`${pet.name} added to cart 🛒`);
   updateCartBadge();
-  debouceSync()
+  console.log("added to cart");
+  
+  
 }
 
 function removeFromCart(petId) {
+  debouceSync()
   const cart = getCart().filter(item => item.id !== petId);
   saveCart(cart);
   updateCartBadge();
-  debouceSync()
+  
 }
 
 function clearCart() {
+  debouceSync()
   localStorage.removeItem("petCart");
   updateCartBadge();
-  debouceSync()
+  
 }
 
 function getCartCount() {

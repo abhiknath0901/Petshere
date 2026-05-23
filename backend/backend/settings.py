@@ -31,6 +31,9 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
+RAZORPAY_KEY_ID = os.getenv('KEY_ID')
+
+RAZORPAY_KEY_SECRET = os.getenv('KEY_SECRET')
 
 # Application definition
 
@@ -83,7 +86,7 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = ["https://petshere.vercel.app"]
+CORS_ALLOWED_ORIGINS = ["https://petshere.vercel.app","http://localhost:5500"]
 CORS_ALLOW_ALL_ORIGINS = DEBUG
 
 ROOT_URLCONF = 'backend.urls'
@@ -112,6 +115,16 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': dj_database_url.parse(os.getenv('DB_URL'))
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE':
+#             'django.db.backends.sqlite3',
+
+#         'NAME':
+#             BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 
 # Password validation

@@ -1,321 +1,483 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PetSphere Payment Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    <title>PetSphere Payment</title>
 
-:root{
-    --cream:#f8efe5;
-    --light:#ead6c1;
-    --brown:#bb8659;
-    --dark:#7b5132;
-    --deep:#4e3120;
-    --glass:rgba(255,255,255,0.78);
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-body{
-    font-family:'Poppins',sans-serif;
-    min-height:100vh;
-    background:linear-gradient(135deg,#f6ede4,#ead7c3,#d9b18a);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    padding:22px;
-}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
-/* MAIN CONTAINER */
-.payment-container{
-    width:100%;
-    max-width:1500px;
-    min-height:92vh;
-    display:grid;
-    grid-template-columns:34% 66%;
-    overflow:hidden;
-    border-radius:30px;
-    box-shadow:0 25px 55px rgba(78,49,32,0.15);
-    background:rgba(255,255,255,0.25);
-    backdrop-filter:blur(12px);
-}
+    <style>
+        :root {
+            --cream: #f8efe5;
+            --light: #ead6c1;
+            --brown: #bb8659;
+            --dark: #7b5132;
+            --deep: #4e3120;
+            --glass: rgba(255, 255, 255, 0.78);
+        }
 
-/* LEFT PANEL */
-.left{
-    background:linear-gradient(160deg,#7b5132,#5f3d27,#3d2418);
-    color:white;
-    padding:50px 38px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    position:relative;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-.left::before{
-    content:"";
-    position:absolute;
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.05);
-    top:-70px;
-    right:-80px;
-}
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f6ede4, #ead7c3, #d9b18a);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 22px;
+        }
 
-.left::after{
-    content:"";
-    position:absolute;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.04);
-    bottom:-50px;
-    left:-60px;
-}
+        .payment-container {
+            width: 100%;
+            max-width: 1400px;
+            min-height: 90vh;
+            display: grid;
+            grid-template-columns: 38% 62%;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: 0 25px 55px rgba(78, 49, 32, 0.15);
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+        }
 
-.left h2{
-    font-size:40px;
-    line-height:1.2;
-    margin-bottom:18px;
-    z-index:1;
-}
+        .left {
+            background: linear-gradient(160deg, #7b5132, #5f3d27, #3d2418);
+            color: white;
+            padding: 50px 38px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
 
-.left p{
-    font-size:16px;
-    line-height:1.9;
-    opacity:.94;
-    max-width:320px;
-    margin-bottom:10px;
-    z-index:1;
-}
+        .left h1 {
+            font-size: 42px;
+            margin-bottom: 18px;
+        }
 
-/* RIGHT PANEL */
-.right{
-    background:var(--glass);
-    backdrop-filter:blur(18px);
-    padding:42px 48px;
-    overflow-y:auto;
-    animation:fadeUp .8s ease;
-}
+        .left p {
+            font-size: 16px;
+            line-height: 1.9;
+            opacity: .95;
+            max-width: 340px;
+        }
 
-.right h3{
-    font-size:28px;
-    color:var(--deep);
-    margin-bottom:15px;
-    margin-top:0;
-}
+        .right {
+            background: var(--glass);
+            backdrop-filter: blur(18px);
+            padding: 45px;
+            overflow-y: auto;
+        }
 
-/* LABELS */
-label{
-    display:block;
-    font-size:14px;
-    font-weight:600;
-    color:var(--deep);
-    margin:14px 0 8px;
-}
+        .section-title {
+            font-size: 28px;
+            color: var(--deep);
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
 
-/* INPUTS */
-input,
-select{
-    width:100%;
-    padding:13px 14px;
-    border-radius:14px;
-    border:1.8px solid #d9b79a;
-    background:#fffaf6;
-    font-size:14px;
-    font-family:'Poppins',sans-serif;
-    transition:.3s ease;
-    outline:none;
-}
+        .order-summary {
+            background: #fffaf6;
+            border-radius: 22px;
+            padding: 25px;
+            border: 1.5px solid #e4c7aa;
+        }
 
-input:focus,
-select:focus{
-    border-color:var(--brown);
-    background:white;
-    box-shadow:0 0 0 4px rgba(187,134,89,0.12);
-    transform:translateY(-1px);
-}
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #ead7c3;
+        }
 
-/* ROW */
-.row{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:16px;
-    margin-top:5px;
-}
+        .cart-item:last-child {
+            border-bottom: none;
+        }
 
-/* UPI BOX */
-.upi-box{
-    margin-top:18px;
-    padding:22px;
-    border-radius:22px;
-    background:#fff8f1;
-    border:1.8px dashed #c99d75;
-}
+        .pet-info {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
 
-/* BUTTON */
-button,
-.pay-btn{
-    width:100%;
-    border:none;
-    margin-top:28px;
-    padding:16px;
-    border-radius:18px;
-    background:linear-gradient(135deg,#bb8659,#7b5132);
-    color:white;
-    font-size:17px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s ease;
-    box-shadow:0 15px 25px rgba(123,81,50,0.2);
-}
+        .pet-img {
+            width: 65px;
+            height: 65px;
+            border-radius: 14px;
+            object-fit: cover;
+        }
 
-button:hover,
-.pay-btn:hover{
-    transform:translateY(-3px);
-    background:linear-gradient(135deg,#aa754b,#603d26);
-    box-shadow:0 22px 32px rgba(123,81,50,0.28);
-}
+        .pet-name {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--deep);
+        }
 
-/* SCROLLBAR */
-.right::-webkit-scrollbar{
-    width:8px;
-}
+        .pet-qty {
+            font-size: 13px;
+            color: #777;
+        }
 
-.right::-webkit-scrollbar-thumb{
-    background:#c8a07a;
-    border-radius:20px;
-}
+        .price {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark);
+        }
 
-/* ANIMATION */
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(28px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
+        .total-box {
+            margin-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 18px;
+        }
 
-/* RESPONSIVE */
-@media(max-width:1024px){
-    .payment-container{
-        grid-template-columns:1fr;
-    }
+        .total-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--deep);
+        }
 
-    .left{
-        padding:35px 24px;
-    }
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--dark);
+        }
 
-    .left h2{
-        font-size:34px;
-    }
-}
+        .payment-box {
+            margin-top: 30px;
+            background: #fffaf6;
+            border-radius: 22px;
+            padding: 25px;
+            border: 1.5px dashed #c99d75;
+        }
 
-@media(max-width:700px){
-    body{
-        padding:12px;
-    }
+        .payment-box h3 {
+            color: var(--deep);
+            margin-bottom: 12px;
+        }
 
-    .right{
-        padding:28px 20px;
-    }
+        .payment-box p {
+            color: #666;
+            line-height: 1.8;
+            font-size: 14px;
+        }
 
-    .row{
-        grid-template-columns:1fr;
-        gap:0;
-    }
+        .pay-btn {
+            width: 100%;
+            border: none;
+            margin-top: 30px;
+            padding: 18px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #bb8659, #7b5132);
+            color: white;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .3s ease;
+        }
 
-    .right h3{
-        font-size:24px;
-    }
+        .pay-btn:hover {
+            transform: translateY(-3px);
+        }
 
-    .left h2{
-        font-size:28px;
-    }
-}
+        .secure {
+            margin-top: 18px;
+            text-align: center;
+            font-size: 13px;
+            color: #666;
+        }
 
-    
-</style>
+        @media(max-width:900px) {
+
+            .payment-container {
+                grid-template-columns: 1fr;
+            }
+
+            .right {
+                padding: 28px 20px;
+            }
+
+            .left {
+                padding: 35px 25px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="payment-container">
+    <div class="payment-container">
 
-    <!-- LEFT SIDE -->
-    <div class="left">
-        <h2>PetSphere Payment</h2>
-        <p>You're not just making a payment — you're making a paw-some difference!</p>
-        <p><strong>Trusted | Secure | Fast</strong></p>
-    </div>
+        <!-- LEFT -->
+        <div class="left">
 
-    <!-- PAYMENT FORM -->
-    <div class="right">
-        <h3>Card Payment</h3>
+            <h1>PetSphere Payment</h1>
 
-        <label>Card Holder Name</label>
-        <input type="text" placeholder="Enter card holder name">
+            <p>
+                Complete your payment securely using Razorpay.
+                Supports UPI, Cards and Net Banking.
+            </p>
 
-        <label>Card Number</label>
-        <input type="text" maxlength="16" placeholder="1234 5678 9012 3456">
-
-        <div class="row">
-            <div style="flex:1;">
-                <label>Expiry Month</label>
-                <select>
-                    <option value="">MM</option>
-                    <option>01</option><option>02</option><option>03</option>
-                    <option>04</option><option>05</option><option>06</option>
-                    <option>07</option><option>08</option><option>09</option>
-                    <option>10</option><option>11</option><option>12</option>
-                </select>
-            </div>
-
-            <div style="flex:1;">
-                <label>Expiry Year</label>
-                <select>
-                    <option value="">YY</option>
-                    <option>2024</option><option>2025</option><option>2026</option>
-                    <option>2027</option><option>2028</option><option>2029</option>
-                </select>
-            </div>
-
-            <div style="flex:1;">
-                <label>CVV</label>
-                <input type="password" maxlength="3" placeholder="***">
-            </div>
         </div>
 
-        <h3 style="margin-top: 30px;">UPI Payment</h3>
+        <!-- RIGHT -->
+        <div class="right">
 
-        <div class="upi-box">
-            <label>Enter UPI ID</label>
-            <input type="text" placeholder="example@upi">
+            <div class="section-title">
+                Order Summary
+            </div>
+
+            <div class="order-summary" id="orderSummary">
+
+            </div>
+
+            <div class="total-box">
+
+                <div class="total-text">
+                    Total Amount
+                </div>
+
+                <div class="total-price" id="totalPrice">
+                    ₹0
+                </div>
+
+            </div>
+
+            <div class="payment-box">
+
+                <h3>
+                    Secure Checkout
+                </h3>
+
+                <p>
+                    You will be redirected to Razorpay secure checkout.
+                </p>
+
+            </div>
+
+            <button id="payBtn" class="pay-btn">
+                Proceed To Pay
+            </button>
+
+            <div class="secure">
+                🔒 Secure Payment Gateway
+            </div>
+
         </div>
 
-       <a href="payment successful.html">
-    <button type="button" class="pay-btn">Proceed to Pay</button>
-</a>
     </div>
 
-    
+    <!-- Razorpay -->
+    <button id="rzp-button1">Pay</button>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
 
-  
-    <div class="image-side"></div>
+    </script>
+    <script src="config.js"></script>
+    <script>
 
-</div>
+        function getCart() {
+
+            return JSON.parse(
+                localStorage.getItem("petCart") || "[]"
+            );
+        }
+
+        function loadCart() {
+
+            const cart = getCart();
+
+            const orderSummary =
+                document.getElementById("orderSummary");
+
+            const totalPrice =
+                document.getElementById("totalPrice");
+
+            let total = 0;
+
+            orderSummary.innerHTML = "";
+
+            cart.forEach(item => {
+
+                total += item.price * item.qty;
+
+                orderSummary.innerHTML += `
+
+        <div class="cart-item">
+
+            <div class="pet-info">
+
+                <img
+                    src="${item.img}"
+                    class="pet-img"
+                >
+
+                <div>
+
+                    <div class="pet-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="pet-qty">
+                        Qty: ${item.qty}
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="price">
+                ₹${item.price * item.qty}
+            </div>
+
+        </div>
+        `;
+            });
+
+            totalPrice.textContent =
+                `₹${total}`;
+        }
+
+        loadCart();
+
+        document
+            .getElementById("payBtn")
+            .addEventListener("click", payNow);
+
+        function payNow() {
+
+            const cart = getCart();
+
+            fetch(
+
+                `${API_URL}/petshpere/create-payment/`,
+
+                {
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type":
+                            "application/json",
+
+                        "Authorization":
+                            `Bearer ${localStorage.getItem("access")
+                            }`
+                    },
+
+                    body: JSON.stringify({
+                        cart: cart
+                    })
+                }
+            )
+
+                .then(response => response.json())
+
+                .then(data => {
+
+                    const options = {
+
+                        key: data.key,
+
+                        amount:
+                            data.payment.amount,
+
+                        currency: "INR",
+
+                        name: "PetSphere",
+
+                        description:
+                            "Pet Purchase",
+
+                        order_id:
+                            data.payment.id,
+
+                        handler: function (payment) {
+
+                            console.log(payment);
+
+                            fetch(
+
+                                `${API_URL}/petshpere/confirm-order/`,
+
+                                {
+                                    method: "POST",
+
+                                    headers: {
+
+                                        "Content-Type":
+                                            "application/json",
+
+                                        "Authorization":
+                                            `Bearer ${localStorage.getItem("access")
+                                            }`
+                                    },
+                                    body: JSON.stringify({
+                                        razorpay_payment_id: payment.razorpay_payment_id,
+
+                                        razorpay_order_id: payment.razorpay_order_id,
+
+                                        razorpay_signature: payment.razorpay_signature,
+                                        cart: getCart(),
+                                        address_id: localStorage.getItem("selectedAddress")
+                                    })
+                                }
+                            )
+
+                                .then(res => res.json())
+
+                                .then(orderData => {
+
+                                    console.log(orderData);
+                                    localStorage.setItem("orderdata", orderData);
+
+                                    localStorage.removeItem(
+                                        "petCart"
+                                    );
+                                    window.location.href = "payment successful.html";
 
 
+                                });
+                        },
+
+                        theme: {
+                            color: "#8d6e63"
+                        }
+                    };
+
+                    const razorpay =
+                        new Razorpay(options);
+
+                    razorpay.open();
+                })
+
+                .catch(err => {
+
+                    console.error(err);
+
+                    alert("Payment Failed");
+                });
+        }
+
+    </script>
 
 </body>
+
 </html>

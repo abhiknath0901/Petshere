@@ -399,12 +399,8 @@ function handleAddToCart(){
 
 // BUY NOW → ADDRESS PAGE
 function buy(){
+  addToCart(pet);
 
-  // SAVE PET DATA
-  localStorage.setItem(
-    "selectedPet",
-    JSON.stringify(pet)
-  );
 
   // GO TO ADDRESS PAGE
   window.location.href = "address page.html";

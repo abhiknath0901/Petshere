@@ -270,7 +270,7 @@ function display(){
           <div class="btn-stack">
             <div class="btn-row">
               <button class="btn" onclick="location.href='details.html?id=${c.id}'">View Details</button>
-              <button class="btn" onclick="location.href='address page.html?id=${c.id}'">Buy Now</button>
+              <button class="btn" onclick="buy(${c.id})">Buy Now</button>
             </div>
             <button class="btn-cart" onclick="handleAddToCart(${c.id}, this)">+ Add to Cart</button>
           </div>
@@ -292,6 +292,15 @@ function handleAddToCart(id, btn){
     btn.textContent = "+ Add to Cart";
     btn.classList.remove("added");
   },2000);
+}
+function buy(id){
+  const pet = allPets.find(p => p.id === id);
+  addToCart(pet);
+
+
+  // GO TO ADDRESS PAGE
+  window.location.href = "address page.html";
+
 }
 
 document.getElementById("searchBox").addEventListener("input", display);

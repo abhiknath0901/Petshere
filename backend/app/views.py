@@ -4,10 +4,11 @@ from rest_framework.response import Response
 from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model, authenticate
-from .models import Pet , Cart, Order
-from .serializers import PetSerializer, CartSerializer, OrderSerializer
+from .models import Pet , Cart, Order, OrderItem, Address
+from .serializers import PetSerializer, CartSerializer
+import razorpay
+from django.conf import settings
 User = get_user_model()
-
 
 # Signup
 @api_view(['POST'])
@@ -111,4 +112,159 @@ def sync_cart(request):
     
     return Response({
         'message' : 'Cart synced successfully.'
+    })
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+
+def save_address(request):
+
+    try:
+
+        address = Address.objects.create(
+
+            user=request.user,
+            receiver_name = request.data.get("receiver_name"),
+
+            receiver_phone=request.data.get("receiver_phone"),
+
+            pincode = request.data.get("pincode"),
+
+            house_no_or_name = request.data.get("house_no_or_name"),
+
+            street_area_locality = request.data.get("street_area_locality"),
+
+            city = request.data.get("city"),
+
+            state= request.data.get("state"),
+
+            landmark= request.data.get("landmark")
+        )
+
+        return Response({
+            "message":
+                "Address saved successfully",
+            "address_id":
+                address.id,
+            "receiver_name":
+                address.receiver_name,
+            "city":
+                address.city
+        }, status= status.HTTP_201_CREATED)
+
+    except Exception as e:
+        return Response({
+            "error": str(e)
+        }, status= status.HTTP_400_BAD_REQUEST)
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def create_payment(request):
+
+    client = razorpay.Client(
+        auth=(
+            settings.RAZORPAY_KEY_ID,
+            settings.RAZORPAY_KEY_SECRET
+        )
+    )
+
+    cart = request.data.get("cart", [])
+
+    total = 0
+
+    for item in cart:
+
+        pet = Pet.objects.get(
+            id=item["id"]
+        )
+
+        total += (
+            pet.price * item["qty"]
+        )
+
+    payment = client.order.create({
+
+        "amount": total * 100,
+
+        "currency": "INR",
+
+        "payment_capture": 1
+    })
+
+    return Response({
+
+        "payment": payment,
+
+        "key":
+        settings.RAZORPAY_KEY_ID
+    })
+
+@api_view(["POST"])
+@permission_classes([IsAuthenticated])
+def confirm_order(request):
+
+    cart = request.data.get("cart")
+
+    address_id = request.data.get("address_id")
+
+    address = Address.objects.get(
+        id=address_id
+    )
+
+    total = 0
+
+    for item in cart:
+
+        total += item["price"] * item["qty"]
+
+    order = Order.objects.create(
+
+    user=request.user,
+
+    address=address,
+
+    total_price=total,
+
+    payment_method="card",
+
+    payment_status="paid",
+
+    status="confirmed",
+
+    razorpay_order_id=
+        request.data.get(
+            "razorpay_order_id"
+        ),
+
+    razorpay_payment_id=
+        request.data.get(
+            "razorpay_payment_id"
+        )
+)
+
+    for item in cart:
+
+        pet = Pet.objects.get(
+            id=item["id"]
+        )
+
+        OrderItem.objects.create(
+
+            order=order,
+
+            pet=pet,
+
+            quantity=item["qty"],
+
+            price=item["price"]
+        )
+
+    Cart.objects.filter(
+        user=request.user
+    ).delete()
+
+    return Response({
+
+        "message":
+            "Order confirmed"
     })

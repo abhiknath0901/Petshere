@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import UserProfile, Pet, Cart, Order, OrderItem
+from .models import UserProfile, Pet, Cart, Order, OrderItem, Address
 
 # # Register your models here.
 @admin.register(UserProfile)
@@ -27,7 +27,7 @@ class PetsAdmin(admin.ModelAdmin):
         'seller'
     )
     list_filter = ('type', 'category', 'age')
-    search_fields = ('name', 'description')
+    search_fields = ('name', 'desc', 'breed_info', 'seller')
     
 @admin.register(Cart)
 class CartAdmin(admin.ModelAdmin):      
@@ -36,18 +36,86 @@ class CartAdmin(admin.ModelAdmin):
     search_fields = ('user__email', 'pet__name')
 
 class OrderItemInline(admin.TabularInline):
+
     model = OrderItem
+
     extra = 0
+
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
+
     list_display = (
-        'created_at',
+
+        'id',
+
+        'user',
+
         'address',
+        'ordered_items',
+
         'total_price',
+
+        'payment_status',
+
         'status',
+
+        'created_at'
+    )
+
+    search_fields = (
+
+        'user__email',
+
+        'address__receiver_name',
+
+        'address__city'
+    )
+
+    list_filter = (
+
+        'status',
+
+        'payment_status',
+
+        'created_at'
+    )
+
+    inlines = [OrderItemInline]
+    def ordered_items(self, obj):
+
+        return ", ".join([
+
+            item.pet.name
+            for item in obj.items.all()
+
+        ])
+
+@admin.register(Address)
+class AddressAdmin(admin.ModelAdmin):
+
+    list_display = (
+
+        'receiver_name',
+
+        'receiver_phone',
+
+        'city',
+
+        'state',
+
         'user'
     )
-    search_fields = ('address','user')
-    list_filter = ('created_at','status')
-    inlines = [OrderItemInline]
+
+    search_fields = (
+
+        'receiver_name',
+
+        'receiver_phone',
+
+        'city',
+
+        'state',
+
+        'user__email'
+    )

@@ -284,7 +284,7 @@ function display(list){
           <div class="btn-stack">
             <div class="btn-row">
               <a class="btn" href="details.html?id=${p.id}">View Details</a>
-              <a class="btn" href="address page.html?id=${p.id}">Buy Now</a>
+              <a class="btn" onclick="buy(${p.id})">Buy Now</a>
             </div>
             <button class="btn-cart" onclick="handleAddToCart(${p.id}, this)">+ Add to Cart</button>
           </div>
@@ -308,6 +308,16 @@ function handleAddToCart(petId, btn){
     btn.textContent = "+ Add to Cart";
     btn.classList.remove("added");
   }, 2000);
+}
+
+function buy(id){
+  const pet = allPets.find(p => p.id === id);
+  addToCart(pet);
+
+
+  // GO TO ADDRESS PAGE
+  window.location.href = "address page.html";
+
 }
 
 function applyFilters(){
